@@ -1,0 +1,468 @@
+
+body {
+    margin: 0px;
+}
+
+.device-item {
+    color: yellow; 
+    font-size: 30px;
+}
+
+.navbar {
+    display: flex;
+    height: 100vh;
+    background-image: url("imgs/1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar-social {
+    margin-top: 30px;
+    margin-left: 40%;
+}
+
+.sel-div {
+    display: flex; 
+    margin-left: 20px;
+}
+
+.navbar-social__item {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.one_main {
+    margin-left: 20%;
+    width: 70%;
+}
+
+.two_text {
+    font-size: 14px; 
+    font-family: monospace; 
+    margin-top: 10px; 
+    color: white; 
+    margin-left: 20%; 
+    width: 60%;
+}
+
+.devices {
+    display: block; 
+    width: 40%;
+}
+
+.last-buy {
+    color: white; 
+    font-size: 40px; 
+    font-family: cursive; 
+    margin-left: 20px; 
+    width: 50%;
+}
+
+.last-complect {
+    color: aqua; 
+    font-size: 18px; 
+    font-family: sans-serif; 
+    margin-left: 20px;
+}
+
+.checker_text {
+    font-size: 14px; 
+    font-family: monospace; 
+    color: white;
+}
+
+.sup_title {
+    color: black; 
+    font-size: 40px; 
+    font-family: monospace;
+}
+
+.sup_text {
+    color: black;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.selecter {
+    color: aqua; 
+    font-size: 18px; 
+    font-family: sans-serif; 
+    margin-left: 20px;
+}
+
+.sup_item {
+    font-size: 18px;
+}
+
+.last_img {
+    width: 50%;
+}
+
+.last_item {
+    font-size: 18px; 
+    color: white;
+}
+
+.one_title {
+    font-size: 40px;
+    font-family: monospace;
+}
+
+.one_text {
+    margin-top: -20px;
+    font-size: 18px;
+}
+
+.img_container {
+    display: flex;
+    width: 100%;
+}
+
+.action_container {
+    display: flex;
+    margin-left: 20%;
+}
+
+.two_main {
+    background-color: black;
+}
+
+.img1 {
+    width: 100%;
+}
+
+.img2 {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.action {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: 2px solid yellow;
+    transform: rotate(-45deg);
+    color: yellow;
+    font-size: 20px;
+}
+
+.action_text {
+    color: white; 
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.asasa_img {
+    width: 50%;
+}
+
+.former {
+    display: flex;
+    margin-left: 20%;
+    margin-top: 20px;
+    width: 90%;
+}
+
+.inputer {
+    background-color: black;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-yellow {
+    color: black;
+    font-size: 16px;
+    background-color: yellow;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    margin-top: 30px;
+}
+
+.checker {
+    color: yellow;
+    background-color: black;
+    margin-top: 20px;
+}
+
+.tree_main {
+    background-color: yellow;
+    padding-bottom: 50px;
+}
+
+.asasa {
+    display: flex;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+}
+
+.sup_block {
+    width: 40%;
+    margin-left: 20px;
+}
+
+.btn-black {
+    color: yellow;
+    font-size: 16px;
+    background-color: black;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    margin-top: 30px;
+}
+
+.last {
+    display: flex;
+}
+
+.last-right {
+    background-color: black;
+    width: 100%;
+}
+
+.img3 {
+    width: 50%;
+    margin-left: 15px;
+}
+
+@media(max-width: 480px) {
+
+    .logo {
+        height: 50px;
+        width: auto;
+    }
+
+    .checker_text {
+        font-size: 12px;
+        color: brown;
+    }
+
+    .last_img {
+        width: 100%;
+    }
+
+    .last {
+        display: block;
+    }
+
+    .last-buy {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .last-complect {
+        margin-left: 10%;
+        font-size: 24px;
+    }
+
+    .last_item {
+        margin-left: 5%;
+    }
+
+    .selecter {
+        margin-left: 10%;
+    }
+
+    .last-right {
+        background-color: black;
+        width: 100%;
+        margin-top: -45px;
+    }
+
+    .one_main {
+        width: 100%;
+        margin-left: 0% !important;
+    }
+
+    .sup_item {
+        font-size: 18px;
+        margin-left: -20px;
+    }
+
+    .one_title {
+        font-size: 20px;
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .one_text {
+        margin-left: 10%;
+        font-size: 18px;
+        width: 80%;
+    }
+
+    .asasa_img {
+        width: 100%;
+    }
+
+    .sup_text {
+        width: 90%;
+    }
+
+    .img1 {
+        width: 50%;
+        margin-top: 0px;	
+    }
+
+    .img2 {
+        width: 50%;
+        margin-top: 0px;
+    }
+
+    .img3 {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .navbar {
+        background-size: 100% 100%;
+        height: 30vh;
+    }
+
+    .vbn {
+        display: flex;
+    }
+
+    .navbar-social {
+        margin-left: 30%;
+        margin-top: 0px;
+    }
+
+    .one_main {
+        margin-left: 5%;
+        width: 100%;
+    }
+
+    .former {
+        margin-left: 5%;
+        width: 100%;
+        display: block;
+    }
+
+    .inputer {
+        font-size: 18px;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .btn-yellow {
+        font-size: 14px;
+        background-color: aqua;
+    }
+
+    .checker {
+        font-size: 14px;
+    }
+
+    .tree_main {
+        padding-bottom: 30px;
+    }
+
+    .device-item {
+        font-size: 20px;
+    }
+
+    .devices {
+        width: 50%;
+    }
+
+    .sup_block {
+        width: 100%;
+    }
+
+    .btn-black {
+        font-size:	14px;
+    }
+
+    .action {
+        font-size: 20px;
+        width: 50px;
+        padding: 10px;
+        margin-top: 40px;
+        height: 25px;
+    }
+
+    .img_container {
+        display: block;
+    }
+
+    .asasa {
+        display: block;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 1024px) {
+    .logo {
+        height: 100px;
+        width: auto;
+    }
+
+    .navbar {
+        background-size: 100% 100%;
+        height: 40vh;
+    }
+
+    .checker_text {
+        font-size: 14px;
+        color: brown;
+    }
+
+    .last_img {
+        width: 100%;
+    }
+
+    .last {
+        display: block;
+    }
+
+    .last-buy {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .last-complect {
+        margin-left: 10%;
+        font-size: 26px;
+    }
+
+    .last_item {
+        margin-left: 5%;
+    }
+
+    .selecter {
+        margin-left: 10%;
+    }
+
+    .last-right {
+        background-color: black;
+        width: 100%;
+        margin-top: -45px;
+    }
+
+    .one_main {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .one_text {
+        font-size: 28px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    .former {
+        margin-left: 50px;
+    }
+}
