@@ -1,0 +1,138 @@
+body {
+	margin: 0px;
+	background-color: black;
+	color: white;
+}
+
+.navbar {
+	display: flex;
+	background-color: #312f2d;
+	height: 60px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-one {
+	font-size: 25px;
+	color: aqua;
+	font-family: cursive;
+	text-decoration: none;
+}
+
+.navbar-links-item {
+	color: purple;
+	font-size: 20px;
+	font-family: sans-serif;
+	margin-right: 20px;
+	text-decoration: none;
+}
+
+.main {
+	height: 80vh;
+	background-image: url("media/assassin.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.main-header {
+	color: darkred;
+	font-family: cursive;
+	font-size: 30px;
+	text-align: center;
+}
+
+.main-select {
+	display: flex;
+	margin-top: 100px;
+	justify-content: space-around;
+}
+
+.main-select-item {
+	color: red;
+	font-size: 30px;
+	font-family: cursive;
+}
+
+.main-select-item:hover {
+	color: darkgreen;
+	font-size: 40px;
+	font-family: sans-serif;
+	transition: font-size 1s linear;
+}
+
+.main-text {
+	color: yellow;
+	font-size: 18px;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.card-div {
+	margin-top: 30px;
+}
+
+.card-title {
+	text-align: center;
+	color: whitesmoke;
+	font-size: 25px;
+	font-family: monospace;
+}
+
+.card-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.card {
+	width: 30%;
+	height: 65vh;
+	border: solid 1px green;
+}
+
+.card-title2 {
+	text-align: center;
+	color: greenyellow;
+	font-size: 20px;
+	font-family: cursive;
+}
+
+.card-img {
+	height: 50vh;
+	width: 100%;
+}
+
+.card-text {
+	text-align: center;
+	color: aqua;
+	font-size: 20px;
+	font-family: sans-serif;
+	margin: 10px;
+}
+
+.footer {
+	margin-top: 40px;
+	background-color: #131111;
+}
+
+.footer-one {
+	color: red;
+	font-size: 20px;
+	font-family: cursive;
+	margin-left: 20px;
+}
+
+.footer-two {
+	color: darkcyan;
+	font-size: 18px;
+	font-family: sans-serif;
+	margin-left: 20px;
+}
+
+
+.footer-tree {
+	color: yellow;
+	font-size: 16px;
+	font-family: sans-serif;
+	margin-left: 20px;
+	padding-bottom: 30px;
+}
