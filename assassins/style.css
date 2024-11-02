@@ -136,3 +136,72 @@ body {
 	margin-left: 20px;
 	padding-bottom: 30px;
 }
+
+@media (max-width: 480px) {
+
+	.main {
+		height: 50vh;
+	}
+
+	.main-select-item {
+        font-size: 15px;
+    }
+
+	.main-select-item:hover {
+		font-size: 25px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+	.footer-one {
+		font-size: 15px;
+	}
+	.footer-two {
+        font-size: 13px;
+    }
+	.footer-tree {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 920px) {
+	.main {
+        height: 60vh;
+    }
+
+    .main-select-item {
+        font-size: 20px;
+    }
+
+    .main-select-item:hover {
+        font-size: 30px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+	.card-text {
+		padding-top: 30px;
+	}
+
+    .footer-one {
+        font-size: 20px;
+    }
+    .footer-two {
+        font-size: 15px;
+    }
+    .footer-tree {
+        font-size: 12px;
+    }
+}
