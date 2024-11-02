@@ -18,3 +18,19 @@ text1.addEventListener("click", function() {
     }
 
 })
+
+text2.addEventListener("click", function() {
+    alert("Альтаир похоже мои ученики не совсем понимают как нужно обращаться с клинком может ты покажешь им")
+})
+
+text3.addEventListener("click", function() {
+    let randomNumber = Math.floor(Math.random() * 100) + 1
+    
+    if (randomNumber  > 30 && randomNumber < 60) {
+        alert("Число " + randomNumber + " больше 30")
+    } if (randomNumber > 60) {
+        alert("Число " + randomNumber + " больше 60")
+    } else {
+        alert("Ну тут хрен пойми что")
+    }
+})
