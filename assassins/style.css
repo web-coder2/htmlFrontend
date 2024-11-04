@@ -205,3 +205,18 @@ body {
         font-size: 12px;
     }
 }
+
+.copy-text {
+	margin-top: 20px;
+    font-size: 20px;
+	padding-bottom: 20px;
+    color: gray;
+    text-align: center;
+}
+
+.copy2 {
+	font-weight: 700;
+	font-family: cursive;
+	font-style: oblique;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
