@@ -220,3 +220,40 @@ body {
 	font-style: oblique;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.true_btn {
+	color: white;
+	background-color: green;
+	border-color: black;
+	border-radius: 15px;
+	padding: 10px 20px;
+	margin-top: -15px;
+	margin-left: 20px;
+	cursor: progress;
+	transition: background-color 0.5s ease;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.true-msg {
+	margin-left: 20px;
+	color: #312f2d;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.second_true {
+	color: antiquewhite;
+	margin-left: 20px;
+	font-size: 20px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	margin-bottom: 20px;
+}
+
+.third_true {
+	color: darkred;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+}

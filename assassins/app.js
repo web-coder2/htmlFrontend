@@ -84,3 +84,45 @@ console.log("-----------------------")
 
 console.log(document.querySelectorAll(".card-text"))
 console.log(document.querySelector(".card-text").innerHTML)
+
+let object3 = {
+    name: "Altair",
+    skill: 10
+}
+
+function killRoberDeSable(obj) {
+    obj.skill *= 3.5
+}
+
+killRoberDeSable(object3)
+console.log(object3)
+
+let true_btn = document.getElementsByClassName("true_btn")
+console.log(true_btn)
+let true_count = 0
+let trueMSG = "<br><i class='true-msg'>Мы верим в себя, Мы видим мир таким какой он есть, и я надеюсь что когда нибудь все увидят его таким</i>"
+
+//true_btn.addEventListener("click", function() {
+//    true_btn.insertAdjacentHTML("afterend", trueMSG)
+//})
+
+second_true_msg = "<br> <i class='second_true'>- Чтоже есть наш мир (Аль Муалим) - Иллюзия и мы можем покориться ей или преодолеть (Альтаир)</i>"
+third_true_msg = "<br> <i class='third_true'>- Что значит преодолеть (Аль Муалим) - понять что НИЧТО НЕ ИСТИНО И ВСЕ ДОЗВОЛЕНО (Альтаир)</i>"
+
+// когда нажимаем на кнопку true_btn, она вставляет сообщение trueMSG после кнопки
+
+true_btn[0].addEventListener("click", function() {
+
+    if (true_count > 3) {
+        true_count = 0
+    }
+
+    true_count++
+    if (true_count % 2 == 0) {
+        true_btn[0].insertAdjacentHTML("afterend", second_true_msg)
+    } else if (true_count % 3 == 0 && true_count % 2 != 0) {
+        true_btn[0].insertAdjacentHTML("afterend", third_true_msg)
+    } else {
+        true_btn[0].insertAdjacentHTML("afterend", trueMSG)
+    }
+})
