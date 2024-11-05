@@ -126,3 +126,25 @@ true_btn[0].addEventListener("click", function() {
         true_btn[0].insertAdjacentHTML("afterend", trueMSG)
     }
 })
+
+let addBtn = document.getElementById("btn-add")
+let inputTag = document.getElementById("tag-add")
+let tagContainer = document.getElementById("added-tages")
+let newTagCount = 0
+
+addBtn.addEventListener("click", function() {
+    newTagCount += 1
+    let assassa = document.createElement("div")
+    assassa.textContent = inputTag.value    
+    let string = "new-tag-" + newTagCount
+    assassa.id = string
+    tagContainer.appendChild(assassa);
+})
+
+let reread = document.getElementById("reread")
+
+reread.addEventListener("click", function() {
+    for (let i = 1; i < newTagCount + 1; i++) {
+        console.log(document.getElementById("new-tag-" + i).innerText)
+    }
+})
