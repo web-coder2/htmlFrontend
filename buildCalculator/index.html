@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>build calculator</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <div class="someApp">
+            <h2 class="app-title">Web online build calculator</h2>
+            <div class="selecter">
+                <h4 class="selecter-title">select type fundament</h4>
+                <select id="buildTypeSelect" class="selecter-select">
+                    <option value="1">full</option>
+                    <option value="0.95">2 section</option>
+                    <option value="0.9">3 section</option>
+                    <option value="0.85">4 section</option>
+                </select>
+            </div>
+            <div class="selecter">
+                <h4 class="selecter-title">select type Марка бетона</h4>
+                <select class="selecter-select" id="buildBetonSelect">
+                    <option value="1">бетон с горизонтальным пористым углом</option>
+                    <option value="0.95">бетон с вертикальным пористым углом</option>
+                    <option value="0.9">бетон с параллельным пористым углом</option>
+                    <option value="0.85">бетон с средним пористым углом</option>
+                </select>
+            </div>
+            <div class="selecter">
+                <h4 class="selecter-title">input ширина ленты А</h4>
+                <input type="number" id="widthA" class="selecter-select">
+                <label for="widthA" class="select-label">метров</label>
+            </div>
+            <div class="selecter">
+                <h4 class="selecter-title">input длина ленты B</h4>
+                <input type="number" id="widthB" class="selecter-select">
+                <label for="widthB" class="select-label">метров</label>
+            </div>
+            <div class="selecter">
+                <h4 class="selecter-title">input высота ленты C</h4>
+                <input type="number" id="widthC" class="selecter-select">
+                <label for="widthC" class="select-label">мм</label>
+            </div>
+            <div class="selecter">
+                <h4 class="selecter-title">input толщина ленты D</h4>
+                <input type="number" id="widthD" class="selecter-select">
+                <label for="widthD" class="select-label">мм</label>
+            </div>
+            <div class="button-div">
+                <button id="calculateButton" class="button">Рассчитать</button>
+            </div> 
+            <canvas id="scheme">
+
+            </canvas>  
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
