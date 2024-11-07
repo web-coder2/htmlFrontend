@@ -138,7 +138,9 @@ addBtn.addEventListener("click", function() {
     assassa.textContent = inputTag.value    
     let string = "new-tag-" + newTagCount
     assassa.id = string
+    assassa.classList.add("added-tag")
     tagContainer.appendChild(assassa);
+    inputTag.value = ""
 })
 
 let reread = document.getElementById("reread")
@@ -146,5 +148,23 @@ let reread = document.getElementById("reread")
 reread.addEventListener("click", function() {
     for (let i = 1; i < newTagCount + 1; i++) {
         console.log(document.getElementById("new-tag-" + i).innerText)
+    }
+})
+
+// удалять новые тэги при нажатии на esc
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        let tags = document.getElementsByClassName("added-tag")
+        // удаление одного последнего тега
+        if (tags.length > 0) {
+            tags[tags.length - 1].remove()
+            newTagCount--
+        }
+    }
+})
+
+inputTag.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        addBtn.click()
     }
 })
