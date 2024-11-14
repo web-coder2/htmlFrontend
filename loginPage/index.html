@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="loginer">
+            <h3>login to site</h3>
+            <div class="social">
+                <a href="index.html" class="fa fa-facebook"></a>
+                <a href="index.html" class="fa fa-twitter"></a>
+                <a href="index.html" class="fa fa-google"></a>
+                <a href="index.html" class="fa fa-linkedin"></a>
+            </div>
+            <p class="or">or use your email address</p>
+            <form method="post">
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </body>
+</html>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f1f1f1;
+    }
+
+   .loginer {
+    width: 350px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   }
+
+   h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: -5px;
+   }
+
+   form {
+    margin-top: 20px;
+   }
+
+   input[type="text"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+   }
+
+   button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e02f2f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+   }
+
+   .social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+   }
+
+   .social a {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #bab2b2;
+    text-decoration: none;
+   }
+
+   .or {
+    margin-top: 20px;
+    text-align: center;
+    color: #3d3b3b;
+    font-weight: bold;
+    font-size: 14px;
+   }
+
+   @media (max-width: 480px) {
+    .loginer {
+        width: 100%;
+    }
+   }
+
+</style>
