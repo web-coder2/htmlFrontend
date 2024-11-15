@@ -100,7 +100,7 @@
     }
 
     .userInfo {
-        margin-left: 30px;
+        margin-left: 10px;
     }
 
     @media (max-width: 768px) {
@@ -159,21 +159,54 @@
 
     let btn = document.querySelector(".app-btn")
     btn.addEventListener("click", function() {
-        console.log("request started ...")
-        let xhr = new XMLHttpRequest()
 
-        xhr.open("GET", "https://randomuser.me/api/")
-        console.log(xhr.readyState)
+        console.log("get data started ...")
+
+        let xhr = new XMLHttpRequest()
+        xhr.open("GET", "https://randomuser.me/api/", true)
         xhr.send()
 
-        xhr.addEventListener("load", function() {
+        console.log(xhr.readyState)
+        console.log(xhr.status)
+        console.log(xhr.responseText)
+
+        xhr.onload = function() {
+
             if (xhr.status === 200) {
                 let data = JSON.parse(xhr.responseText)
+                let user = data.results[0]
+                let photo = user.picture.large
+                let username = user.name.first + " " + user.name.last
+                let userId = user.id.value
+                let userGender = user.gender
+                let location = user.location.street + ", " + user.location.city + ", " + user.location.state + ", " + user.location.country
+                let latitude = user.location.coordinates.latitude
+                let longitude = user.location.coordinates.longitude
+                let country = user.location.country
+                let city = user.location.city
+                let street = user.location.street.number + " " + user.location.street.name
+                let email = user.email
+                let phone = user.phone
+
                 console.log(data)
+
+                document.getElementById("userPhoto").src = photo
+                document.getElementById("username").textContent = "User Name: " + username
+                document.getElementById("userid").textContent = "User ID: " + userId
+                document.getElementById("usergender").textContent = "User Gender: " + userGender
+                document.getElementById("userlocation").textContent = "Location: " + location
+                document.getElementById("latitude").textContent = "Latitude: " + latitude
+                document.getElementById("longitude").textContent = "Longitude: " + longitude
+                document.getElementById("country").textContent = "Country: " + country
+                document.getElementById("city").textContent = "City: " + city
+                document.getElementById("street").textContent = "Street: " + street
+                document.getElementById("useremail").textContent = "Email: " + email
+                document.getElementById("userphone").textContent = "Phone: " + phone
+
             } else {
-                console.log("error: ", xhr.status)
+                console.log("Ебаная ошибка хули сервер опять наебнулся это пиздец блять ебаный нахуй ээ ебаный ")
             }
-        })
+        }
     })
 
 </script>
