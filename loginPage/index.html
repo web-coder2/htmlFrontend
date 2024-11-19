@@ -15,13 +15,29 @@
                 <a href="index.html" class="fa fa-linkedin"></a>
             </div>
             <p class="or">or use your email address</p>
-            <form method="post">
+            <div>
                 <input type="text" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
+                <button type="submit" id="loginBtn">Login</button>
+            </div>
+            <div class="coder_container">
+                <!--после того как юзер нажал на loginbtn-->
+                <p class="selectTitle">select data of coder</p>
+                <div class="coder-data">
+                    <select class="coderSelect">
+                        <option value="python">Python dev</option>
+                        <option value="javascript">JS dev (front / back / mobile)</option>
+                        <option value="c#">c# (gamedev / SW)</option>
+                    </select>
+                    <input type="number" placeholder="skill of coder" id="coderSkill" class="numInput">
+                    <input type="number" placeholder="cash of coder" id="coderCash" class="numInput">
+                    <button id="dataBtn">send data</button>
+                    <div class="coderInfo"></div>
+                </div>
+            </div>
         </div>
     </body>
+    <script src="app.js"></script>
 </html>
 
 <style>
@@ -41,6 +57,47 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
    }
 
+   .coder_container {
+    display: none;
+   }
+
+   .coding1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #d21010;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px;
+   }
+
+   .coding2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #900c0c;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px;
+   }
+
+   .coding3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: #600d0d;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px;
+   }
+
+   .coderInfo {
+    display: none;
+   }
+
    h3 {
     text-align: center;
     margin-bottom: 20px;
@@ -52,6 +109,35 @@
 
    form {
     margin-top: 20px;
+   }
+
+   .selectTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+   }
+
+   .coderSelect {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+   }
+
+   .numInput {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    text-align: center;
    }
 
    input[type="text"], input[type="password"] {
@@ -67,6 +153,18 @@
     padding: 10px;
     background-color: #e02f2f;
     color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+   }
+
+   #dataBtn {
+    margin-top: 20px;
+    background-color: #c8d425;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
