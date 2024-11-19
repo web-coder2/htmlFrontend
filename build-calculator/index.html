@@ -85,6 +85,7 @@
                 </div>
                 <div class="col-md-6 offset-md-3 text-center">
                     <img src="scheme.png" class="img-fluid">
+                    <canvas id="canvasAnimation"></canvas>
                     <p class="text-light mt-5">Copyright © 2024. All rights reserved.</p>
                 </div>
             </div>
@@ -92,9 +93,59 @@
     </body>
 </html>
 
+<style>
+
+    #canvasAnimation {
+        margin-top: 20px;
+        width: 200%;
+        margin-left: -50%;
+        text-align: center;
+        height: 30vh;
+    }
+
+</style>
+
 <script>
 
     let calculateBtn = document.getElementById("calculate")
+
+    let canvasAnimation = document.getElementById("canvasAnimation")
+    let ctxAnimation = canvasAnimation.getContext("2d")
+    let animationInterval = setInterval(animate, 150)
+    let animationFrame = 0
+
+    function animate() {
+        ctxAnimation.clearRect(0, 0, canvasAnimation.width, canvasAnimation.height)
+        ctxAnimation.fillStyle = "#000"
+        ctxAnimation.fillRect(0, 0, canvasAnimation.width, canvasAnimation.height)
+        ctxAnimation.fillStyle = "#fff"
+        ctxAnimation.beginPath()
+
+        // через цикл сделать чтобы сверху под углом в 40 градусов падали белые овалы и зеленые шарики вниз
+
+        for (let i = 0; i < 10; i++) {
+            let x = Math.random() * canvasAnimation.width
+            let y = Math.random() * canvasAnimation.height
+            let r = Math.random() + 2
+            ctxAnimation.ellipse(x, y, r, r, 0, 0, Math.PI * 2)
+            ctxAnimation.fill()
+            ctxAnimation.beginPath()
+            ctxAnimation.ellipse(x, y, r, r, 0, 0, Math.PI * 2)
+            ctxAnimation.fillStyle = "#ff0"
+            ctxAnimation.fill()
+            ctxAnimation.beginPath()
+            ctxAnimation.ellipse(x, y, r, r, 0, 0, Math.PI * 2)
+            ctxAnimation.fill()
+            ctxAnimation.beginPath()
+            ctxAnimation.ellipse(x, y, r, r, 0, 0, Math.PI * 2)
+            ctxAnimation.fillStyle = "#0f0"
+            ctxAnimation.fill()
+            ctxAnimation.beginPath()
+            ctxAnimation.ellipse(x, y, r, r, 0, 0, Math.PI * 2)
+            ctxAnimation.fill()
+        }
+    }
+
 
     calculateBtn.addEventListener("click", function() {
         let fundament = document.getElementById("fundament").value
@@ -108,7 +159,12 @@
         let weight = volume * thickness * 0.000001
         let cost = weight * fundament
         let result = document.getElementById("result")
-        result.innerHTML = `Стоимость постройки ленты: ${cost.toFixed(2)} RUB`
+        let Volum = (height / 1000) * ((2 * thickness * width / 1000) + (2 * thickness * length / 1000))
+        result.innerHTML = `
+        <p>Стоимость постройки ленты: ${cost.toFixed(2)} RUB</p>
+        <p>Объем ленты: ${Volum.toFixed(1)} м^2</p>
+        `
+
     })
 
 </script>
