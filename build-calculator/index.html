@@ -107,6 +107,38 @@
 
 <script>
 
+    let rotateDegree = 0
+    let img = document.querySelector(".img-fluid")
+    let rotateStatus = true
+
+    function changeStatus() {
+        rotateStatus =!rotateStatus
+    }
+
+    img.addEventListener("click", function() {
+        changeStatus()
+    })
+
+    function roteteIMG() {
+
+        if (rotateStatus == true) {
+
+            img.style.transform = `rotate(${rotateDegree}deg)`
+            rotateDegree += 20
+
+            if (rotateDegree == 360) {
+                rotateDegree = 0
+            }
+        } else {
+            clearInterval(animationInterval)
+            animationInterval = setInterval(animate, 150)
+            animationFrame = 0
+        }
+    }
+
+    setInterval(roteteIMG, 200)
+
+
     let calculateBtn = document.getElementById("calculate")
 
     let canvasAnimation = document.getElementById("canvasAnimation")
