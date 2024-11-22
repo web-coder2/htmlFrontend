@@ -73,6 +73,44 @@ body {
     background-color: rgb(117, 18, 255); 
 }
 
+.block-container {
+  display: flex;
+}
+
+.block {
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 200px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.block1 {
+  background-color: #4900ae;
+}
+
+.block2 {
+  background-color: rgb(117, 18, 255);
+}
+
+.block-header {
+  font-weight: bold;
+}
+
+.block-value {
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  padding: 10px;
+  border-radius: 40px;
+  width: 90%;
+  text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -107,6 +145,22 @@ body {
   </div>
 
 </div>
+
+
+<div class="block-container">
+  <div class="block block1">
+    <div class="block-header">Результат с трафика:</div>
+    <div class="block-value">-74025</div>
+  </div>
+
+  <div class="block block2">
+    <div class="block-header">Общий результат:</div>
+    <div class="block-value">-395503</div>
+  </div>
+
+</div>
+
+
 
 </body>
 </html>
