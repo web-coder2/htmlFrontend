@@ -57,3 +57,34 @@ loginBtn.addEventListener("click", function() {
     })
 
 })
+
+let loginer = document.querySelector(".loginer");
+let body = document.querySelector("body");
+
+// Установите position: relative для родительского элемента loginer
+loginer.parentNode.style.position = "relative"; //Важно!
+
+loginer.style.position = "absolute"; // loginer должен быть позиционирован относительно родителя
+
+let isDragging = false;
+let offsetX, offsetY;
+
+loginer.addEventListener("mousedown", (e) => {
+ isDragging = true;
+ offsetX = e.clientX - loginer.offsetLeft;
+ offsetY = e.clientY - loginer.offsetTop;
+});
+
+body.addEventListener("mousemove", (e) => {
+ if (!isDragging) return;
+
+ const newX = e.clientX - offsetX;
+ const newY = e.clientY - offsetY;
+
+ loginer.style.marginLeft = `${newX}px`;
+ loginer.style.marginTop = `${newY}px`;
+});
+
+body.addEventListener("mouseup", () => {
+ isDragging = false;
+});
