@@ -17,9 +17,7 @@
 	<div class="container-fluid col-sm-4 ofset-sm-4" id="app">
 		<h2 class="text-center text-info">form to get data</h2>
 		<h4 class="text-center text-warning">express application</h4>
-		<input v-on:keyup.enter="validation()" type="number" placeholder="number of data (1-7)" class="form-group" v-model="number">
-		<p v-if="errorMsg !== null" class="text-danger">{{ errorMsg }}</p>
-		<button class="btn btn-success" @click="validation()">get data</button>
+		<button class="btn btn-success" @click="getData()">get data</button>
 		<br>
 		<h2 class="text-center text-info">send data into server</h2>
 		<p class="text-center text-warning">select day of the week</p>
@@ -40,9 +38,33 @@
 			<option value="nalog">nalog</option>
 			<option value="salary">salary of brokers</option>
 		</select><br>
-		<button class="text-center btn btn-success">send new data</button>
+		<input type="number" class="form-control" v-model="number2"><br>
+		<button class="text-center btn btn-success" @click="sendData()">send new data</button>
 	</div>
 	<script src="https://unpkg.com/vue@2.7.14/dist/vue.js"></script>
-	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+	let app = new Vue({
+	el: "#app",
+	data: {
+		number: 0,
+		errorMsg: null,
+		selectedDay: "friday",
+		selectedType: "summHold",
+		number2: 71500,
+	},
+	methods: {
+		sendData: function() {
+			console.log("started send data")
+			console.log("selected day => " + this.selectedDay)
+			console.log("selected mode => " + this.selectedType)
+			console.log("number of nums => " + this.number2)
+		},
+		getData: function() {
+			console.log("started get data")
+		}
+	}
+})
+</script>
