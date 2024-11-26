@@ -12,10 +12,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     </head>
     <body style="background-color: black;">
-        <div class="container mt-5">
+        <div class="container mt-5 app">
             <div class="row">
                 <div class="col-md-6 offset-md-3 text-center">
-                    <h1 class="text-light">Online Build Calculator</h1>
+                    <h1 style="color: rgb(217, 223, 31);">Online Build Calculator</h1>
                     <div id="buildForm">
                         <div class="form-group row mt-5">
                             <div class="col-md-4">
@@ -86,7 +86,7 @@
                 <div class="col-md-6 offset-md-3 text-center">
                     <img src="scheme.png" class="img-fluid">
                     <canvas id="canvasAnimation"></canvas>
-                    <p class="text-light mt-5">Copyright © 2024. All rights reserved.</p>
+                    <p class="mt-5" style="color: rgb(242, 148, 25) !important;">Copyright © 2024. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -96,11 +96,20 @@
 <style>
 
     #canvasAnimation {
-        margin-top: 20px;
+        margin-top: 80px;
         width: 200%;
         margin-left: -50%;
         text-align: center;
         height: 30vh;
+        border-radius: 50px;
+    }
+
+    .app {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #242121;
+        border-radius: 30px;
     }
 
 </style>
@@ -192,9 +201,16 @@
         let cost = weight * fundament
         let result = document.getElementById("result")
         let Volum = (height / 1000) * ((2 * thickness * width / 1000) + (2 * thickness * length / 1000))
+
+        let surface = ( ( 2 * length )  + (2 * width) ) * height
+        let brikSurface = 0.5 * 0.3
+        let numBriks = surface / brikSurface
+
         result.innerHTML = `
         <p>Стоимость постройки ленты: ${cost.toFixed(2)} RUB</p>
         <p>Объем ленты: ${Volum.toFixed(1)} м^2</p>
+        <p>Количество кирпичей для постройки ленты: ${numBriks.toFixed(0)}</p>
+        <p>Площадь поверхности (не объем) ленты: ${surface.toFixed(0)}</p>
         `
 
     })
