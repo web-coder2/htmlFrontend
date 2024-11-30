@@ -31,7 +31,7 @@
 		    	<button class="btn btn-success" @click="varsParam=1">считать ось X за массу</button>
 		    	<button class="btn btn-success" @click="varsParam=2">считать ось X за скорость</button>
 		    	<canvas ref="ChartPlot"></canvas>
-		    	<div class="container">
+		    	<div class="container" v-if="shower == true">
 				  <table class="table table-striped">
 				    <thead>
 				      <tr>
