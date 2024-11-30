@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ScienceWEB 1.0</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="container mt-5">
+		  <div class="row mt-5">
+		    <div class="col-md-6 col-sm-12">
+		      <h4 class="text-warning">calculating cinetic energy of body</h4>	
+		      <div class="form-group">
+		        <label class="text-info">select mass of body (kg)</label>
+		        <input v-model="mass" type="range" class="form-control-range" min="0" max="1000">
+		        <p class="text-success">mass: {{ mass }} kg</p>
+		      </div>
+		      <div class="form-group">
+		      	<label class="text-info">select speed of (m/s)</label>
+		      	<input type="range" v-model="speed" class="form-control-range" min="0" max="1000">
+		      	<p class="text-success">speed {{ speed }} m/s</p>
+		      </div>
+		      <button class="btn btn-warning" @click="digital()">расчитать</button>
+		    </div>
+		    <div class="col-md-6 col-sm-12">
+		    	<button class="btn btn-success" @click="varsParam=1">считать ось X за массу</button>
+		    	<button class="btn btn-success" @click="varsParam=2">считать ось X за скорость</button>
+		    	<canvas ref="ChartPlot"></canvas>
+		    	<div class="container">
+				  <table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>mass(kg)</th>
+				        <th>speed(m/s)</th>
+				        <th>energy (joul)</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr v-for="(item, index) in arrayMass">
+				        <td>{{ item }}</td>
+				        <td>{{ arraySpeed[index] }}</td>
+				        <td>{{ arrayEnergy[index] }}</td>
+				      </tr>
+				    </tbody>
+				  </table>
+				</div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+	let app = Vue.createApp({
+		data() {
+			return {
+				mass: 10,
+				speed: 40,
+				arrayMass: [],
+				arraySpeed: [],
+				arrayEnergy: [],
+				shower: false,
+				chartType: "line",
+				chart: null,
+				varsParam: 1,
+				varParam: null,
+			}
+		},
+		methods: {
+			digital() {
+
+				this.shower = false
+
+				if (this.chart) {
+					this.chart.destroy()
+				}
+
+				this.arrayMass = []
+				this.arraySpeed = []
+				this.arrayEnergy = []
+
+				let deltaMass = this.mass / 5
+				let deltaSpeed = this.speed / 5
+
+				let selfMass = this.mass
+				let selfSpeed = this.speed
+
+				for (let i = 5; i >= 1; i--) {
+					let energy = (selfMass * (selfSpeed * selfSpeed)) / 2
+
+					this.arrayMass.push(selfMass)
+					this.arraySpeed.push(selfSpeed)
+					this.arrayEnergy.push(energy)
+
+					selfMass = selfMass - deltaMass
+					selfSpeed = selfSpeed - deltaSpeed
+				}
+
+				if (this.varsParam == 1) {
+					this.varParam = this.arrayMass
+				} else {
+					this.varParam = this.arraySpeed
+				}
+
+
+				this.shower = true
+				this.createChart()
+			},
+			createChart() {
+				let canvaser = this.$refs["ChartPlot"]
+				this.chart = new Chart(canvaser.getContext("2d"), {
+					type: this.chartType,
+					data: {
+                        labels: this.varParam,
+                        datasets: [{
+                            data: this.arrayEnergy,
+                            backgroundColor: "rgb(25, 25, 112)",
+                            hoverOffset: 10,
+                            fill: true,
+                            borderColor: "rgb(128, 113, 179)",
+                            pointRadius: 5,
+                            pointHoverRadius: 10,
+                            tension: 0.35,
+                            pointBackgroundColor: "rgba(128, 113, 179, 0.7)"
+                        }]
+                    },
+                      	options: {
+                         	plugins: {
+                              	legend: {
+                                	display: false
+                              	}
+                          	},
+                        tooltips: {
+                            mode: 'label',
+                            intersect: false,
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index',
+                        },
+                    }
+				})
+			},
+		}
+	}).mount("#app")
+
+
+</script>
