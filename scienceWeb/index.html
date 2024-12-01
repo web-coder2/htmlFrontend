@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ScienceWEB 1.0</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>ScienceWEB 1.0</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div id="app">
-		<div class="container mt-5">
-		  <div class="row mt-5">
-		    <div class="col-md-6 col-sm-12">
-		      <h4 class="text-warning">calculating cinetic energy of body</h4>	
-		      <div class="form-group">
-		        <label class="text-info">select mass of body (kg)</label>
-		        <input v-model="mass" type="range" class="form-control-range" min="0" max="1000">
-		        <p class="text-success">mass: {{ mass }} kg</p>
-		      </div>
-		      <div class="form-group">
-		      	<label class="text-info">select speed of (m/s)</label>
-		      	<input type="range" v-model="speed" class="form-control-range" min="0" max="1000">
-		      	<p class="text-success">speed {{ speed }} m/s</p>
-		      </div>
-		      <button class="btn btn-warning" @click="digital()">расчитать</button>
-		    </div>
-		    <div class="col-md-6 col-sm-12">
-		    	<button class="btn btn-success" @click="varsParam=1">считать ось X за массу</button>
-		    	<button class="btn btn-success" @click="varsParam=2">считать ось X за скорость</button>
-		    	<canvas ref="ChartPlot"></canvas>
-		    	<div class="container" v-if="shower == true">
-				  <table class="table table-striped">
-				    <thead>
-				      <tr>
-				        <th>mass(kg)</th>
-				        <th>speed(m/s)</th>
-				        <th>energy (joul)</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-				      <tr v-for="(item, index) in arrayMass">
-				        <td>{{ item }}</td>
-				        <td>{{ arraySpeed[index] }}</td>
-				        <td>{{ arrayEnergy[index] }}</td>
-				      </tr>
-				    </tbody>
-				  </table>
-				</div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
+ <div id="app">
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <div class="col-12">
+        <h4 class="text-warning">calculating cinetic energy of body</h4> 
+        <div class="form-group">
+          <label class="text-info">select mass of body (kg)</label>
+          <input v-model="mass" type="range" class="form-control-range" min="0" max="1000">
+          <p class="text-success">mass: {{ mass }} kg</p>
+        </div>
+        <div class="form-group">
+         <label class="text-info">select speed of (m/s)</label>
+         <input type="range" v-model="speed" class="form-control-range" min="0" max="1000">
+         <p class="text-success">speed {{ speed }} m/s</p>
+        </div>
+        <button class="btn btn-warning btn-block mb-3" @click="digital()">расчитать</button>
+      </div>
+      <div class="col-12">
+       <div class="form-group">
+        <button class="btn btn-success btn-block mb-3" @click="varsParam=1">считать ось X за массу</button>
+        <button class="btn btn-success btn-block" @click="varsParam=2">считать ось X за скорость</button>
+       </div>
+       <canvas class="mt-5" ref="ChartPlot"></canvas>
+       <div class="container mt-5">
+      <table class="table table-striped" v-if="masses.length > 0">
+        <thead>
+          <tr>
+            <th class="text-danger text-left">mass(kg)</th>
+            <th class="text-warning text-left">speed(m/s)</th>
+            <th class="text-success text-left">energy (joul)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in masses">
+            <td class="text-danger text-left">{{ item }}</td>
+            <td class="text-warning text-left">{{ speeds[index] }}</td>
+            <td class="text-success text-left">{{ energies[index] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
 </body>
 </html>
+
+
 
 <script type="text/javascript">
 
@@ -72,8 +76,25 @@
 				shower: false,
 				chartType: "line",
 				chart: null,
-				varsParam: 1,
+				varsParam: 0,
 				varParam: null,
+				masses: [],
+				speeds: [],
+				energies: [],
+				isDesktop: null,
+			}
+		},
+		watch: {
+			varsParam() {
+				this.digital()
+			}
+		},
+		beforeMount() {
+			let winSize = window.innerWidth
+			if (winSize > 480) {
+				this.isDesktop = true
+			} else {
+				this.isDesktop = false
 			}
 		},
 		methods: {
@@ -89,6 +110,10 @@
 				this.arraySpeed = []
 				this.arrayEnergy = []
 
+				this.masses = []
+				this.speeds = []
+				this.energies = []
+
 				let deltaMass = this.mass / 5
 				let deltaSpeed = this.speed / 5
 
@@ -98,9 +123,9 @@
 				for (let i = 5; i >= 1; i--) {
 					let energy = (selfMass * (selfSpeed * selfSpeed)) / 2
 
-					this.arrayMass.push(selfMass)
-					this.arraySpeed.push(selfSpeed)
-					this.arrayEnergy.push(energy)
+					this.arrayMass.push(Math.round(selfMass))
+					this.arraySpeed.push(Math.round(selfSpeed))
+					this.arrayEnergy.push(Math.round(energy))
 
 					selfMass = selfMass - deltaMass
 					selfSpeed = selfSpeed - deltaSpeed
@@ -110,8 +135,13 @@
 					this.varParam = this.arrayMass
 				} else {
 					this.varParam = this.arraySpeed
+				} if (this.varsParam == 0) {
+					this.varParam = this.arrayMass
 				}
 
+				this.masses = this.arrayMass.map((item) => item + " kg")
+				this.speeds = this.arraySpeed.map((item) => item + " m/s")
+				this.energies = this.arrayEnergy.map((item) => item + " joul")
 
 				this.shower = true
 				this.createChart()
