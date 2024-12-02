@@ -151,34 +151,34 @@
 				this.chart = new Chart(canvaser.getContext("2d"), {
 					type: this.chartType,
 					data: {
-                        labels: this.varParam,
-                        datasets: [{
-                            data: this.arrayEnergy,
-                            backgroundColor: "rgb(25, 25, 112)",
-                            hoverOffset: 10,
-                            fill: true,
-                            borderColor: "rgb(128, 113, 179)",
-                            pointRadius: 5,
-                            pointHoverRadius: 10,
-                            tension: 0.35,
-                            pointBackgroundColor: "rgba(128, 113, 179, 0.7)"
-                        }]
-                    },
-                      	options: {
-                         	plugins: {
-                              	legend: {
-                                	display: false
-                              	}
-                          	},
-                        tooltips: {
-                            mode: 'label',
-                            intersect: false,
-                        },
-                        interaction: {
-                            intersect: false,
-                            mode: 'index',
-                        },
-                    }
+            labels: this.varParam,
+            datasets: [{
+              data: this.arrayEnergy,
+              backgroundColor: "rgb(25, 25, 112)",
+              hoverOffset: 10,
+              fill: true,
+              borderColor: "rgb(128, 113, 179)",
+              pointRadius: 5,
+              pointHoverRadius: 10,
+              tension: 0.35,
+              pointBackgroundColor: "rgba(128, 113, 179, 0.7)"
+            }]
+          },
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+          tooltips: {
+            mode: 'label',
+            intersect: false,
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+         }
 				})
 			},
 		}
