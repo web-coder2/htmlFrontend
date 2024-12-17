@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mocha.js test app</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.1.4/mocha.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.1.4/mocha.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.7/chai.min.js"></script>
+    </head>
+    <body>
+        <div id="mocha"></div>
+    </body>
+</html>
+
+<script>
+
+    function twoSumm(a, b) {
+        return a + b
+    }
+
+    function getSqrt(num) {
+        if (num < 0) {
+            throw new Error("Нельзя вычислить квадратный корень из отрицательного числа")
+        }
+        return Math.sqrt(num)
+    }
+
+    mocha.setup("bdd", {
+        "ui": "bdd",
+        "reporter": "html"
+    });
+
+    let assert = chai.assert;
+
+    describe("TwoSumm function", function() {
+
+        it("обычное сложение положительных чисел", function() {
+            assert.equal(twoSumm(3, 7), 10);
+        });
+
+        it("обычное сложение отрицательных чисел", function() {
+            assert.equal(twoSumm(-3, -4), -7)
+        });
+
+        it("обычное сложение нуля", function() {
+            assert.equal(twoSumm(0, 0), 0)
+        });
+
+        it("обычное сложение с большими числами", function() {
+            assert.equal(twoSumm(1000000000, 2000000000), 3000000000)
+        });
+
+        it("сложение смешаных чисел", function() {
+            assert.equal(twoSumm(20, -2), 18)
+        });
+
+    })
+
+    describe("функция получения корня", function() {
+        it("обычное вычисление квадратного корня положительного числа", function() {
+            assert.equal(getSqrt(25), 5)
+        });
+
+        it("вычисление квадратного корня нуля", function() {
+            assert.equal(getSqrt(0), 0)
+        });
+
+        it("вычисление квадратного корня отрицательного числа", function() {
+            assert.throws(() => getSqrt(-25), Error, "Нельзя вычислить квадратный корень из отрицательного числа")
+        });
+    })
+
+    mocha.run()
+
+</script>
