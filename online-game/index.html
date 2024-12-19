@@ -42,7 +42,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(game, index) in player.lastGames" :key="index" :class="{ 'table-success': game.result === 'Победа'}">
+              <tr v-for="(game, index) in player.lastGames" 
+                :key="index" 
+                :class="['table-striped', game.result === 'Победа' ? 'table-success' : game.result === 'Поражение' ? 'table-danger' : '']">
                 <td>{{ index + 1 }}</td>
                 <td>{{ game.score }}</td>
                 <td>{{ game.result }}</td>
@@ -81,7 +83,7 @@
         return {
           player: {
             avatar: 'https://via.placeholder.com/150',
-            nickname: 'PlayerName',
+            nickname: 'w3b-c0d3r',
             playtime: '100 часов',
             totalGames: 50,
             wins: 30,
@@ -95,7 +97,7 @@
             ],
           },
           leaderboard: [
-            { nickname: 'PlayerName', wins: 30, totalGames: 50, rating: 1590 },
+            { nickname: 'w3b-c0d3r', wins: 30, totalGames: 50, rating: 1590 },
             { nickname: 'Player2', wins: 25, totalGames: 45, rating: 1750 },
             { nickname: 'Player3', wins: 20, totalGames: 40, rating: 1600 },
             { nickname: 'Player4', wins: 15, totalGames: 35, rating: 1550 },
