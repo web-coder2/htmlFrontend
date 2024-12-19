@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Личный кабинет</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1>Личный кабинет</h1>
+
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <img :src="player.avatar" alt="Player Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
+            </div>
+            <div class="col-md-9">
+              <p><strong>Ник:</strong> {{ player.nickname }}</p>
+              <p><strong>Время игры:</strong> {{ player.playtime }}</p>
+              <p><strong>Кол-во игр:</strong> {{ player.totalGames }}</p>
+              <p><strong>Кол-во побед:</strong> {{ player.wins }}</p>
+              <p><strong>Рейтинг:</strong> {{ player.rating }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h2>Последние 5 игр</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Очки</th>
+                <th>Результат</th>
+                <th>Время</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(game, index) in player.lastGames" :key="index" :class="{ 'table-success': game.result === 'Победа'}">
+                <td>{{ index + 1 }}</td>
+                <td>{{ game.score }}</td>
+                <td>{{ game.result }}</td>
+                <td>{{ game.time }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <h2>Рейтинг игроков</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Ник</th>
+                <th>Победы</th>
+                <th>Игры</th>
+                <th>Рейтинг</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="p in leaderboard" :key="p.nickname" :class="{ 'table-primary': p.nickname === player.nickname }">
+                <td>{{ p.nickname }}</td>
+                <td>{{ p.wins }}</td>
+                <td>{{ p.totalGames }}</td>
+                <td>{{ p.rating }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          player: {
+            avatar: 'https://via.placeholder.com/150',
+            nickname: 'PlayerName',
+            playtime: '100 часов',
+            totalGames: 50,
+            wins: 30,
+            rating: 1800,
+            lastGames: [
+              { score: 1500, result: 'Победа', time: '30 мин' },
+              { score: 1200, result: 'Поражение', time: '25 мин' },
+              { score: 1600, result: 'Победа', time: '35 мин' },
+              { score: 1300, result: 'Поражение', time: '28 мин' },
+              { score: 1400, result: 'Победа', time: '32 мин' },
+            ],
+          },
+          leaderboard: [
+            { nickname: 'PlayerName', wins: 30, totalGames: 50, rating: 1590 },
+            { nickname: 'Player2', wins: 25, totalGames: 45, rating: 1750 },
+            { nickname: 'Player3', wins: 20, totalGames: 40, rating: 1600 },
+            { nickname: 'Player4', wins: 15, totalGames: 35, rating: 1550 },
+            { nickname: 'Player5', wins: 10, totalGames: 30, rating: 1400 },
+          ],
+        };
+      },
+      mounted() {
+        this.leaderboard.sort((a, b) =>  b.rating - a.rating)
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
