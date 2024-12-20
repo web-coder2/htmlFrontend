@@ -10,6 +10,21 @@
         <script src="https://unpkg.com/vue@3"></script>
     </head>
     <body>
-
+        <div id="app" class="container">
+            <h1 class="mt-5">Личный кабинет</h1>
+        </div>
     </body>
 </html>
+
+<script>
+
+    let response = axios.get('http://77.232.138.173:3000/users', {
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    
+    console.log(response)
+
+</script>
