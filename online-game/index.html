@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Личный кабинет</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1 id="title">Личный кабинет</h1>
+
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              <img :src="player.avatar" alt="Player Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
+            </div>
+            <div class="col-md-10" id="information">
+              <p><strong>Ник:</strong> {{ player.nickname }}</p>
+              <p><strong>Время игры:</strong> {{ player.playtime }}</p>
+              <p><strong>Кол-во игр:</strong> {{ player.totalGames }}</p>
+              <p><strong>Кол-во побед:</strong> {{ player.wins }}</p>
+              <p><strong>Рейтинг:</strong> {{ player.rating }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h2>Последние 5 игр</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Очки <i class="bi bi-currency-dollar"></i></th>
+                <th>Результат</th>
+                <th>Время <i class="bi bi-alarm"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(game, index) in player.lastGames" 
+                :key="index" 
+                :class="['table-striped', game.result === 'Победа' ? 'table-success' : game.result === 'Поражение' ? 'table-danger' : '']">
+                <td>{{ index + 1 }}</td>
+                <td>{{ game.score }}</td>
+                <td>{{ game.result }}</td>
+                <td>{{ game.time }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <h2>Рейтинг игроков</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Ник <i class="bi bi-person"></i></th>
+                <th>Победы <i class="bi bi-check-circle"></i></th>
+                <th>Игры <i class="bi bi-controller"></i></th>
+                <th>Рейтинг <i class="bi bi-trophy"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="p in leaderboard" :key="p.nickname" :class="{ 'table-primary': p.nickname === player.nickname }">
+                <td>{{ p.nickname }}</td>
+                <td>{{ p.wins }}</td>
+                <td>{{ p.totalGames }}</td>
+                <td>{{ p.rating }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          player: {
+            avatar: 'https://via.placeholder.com/150',
+            nickname: 'w3b-c0d3r',
+            playtime: '100 часов',
+            totalGames: 50,
+            wins: 30,
+            rating: 1800,
+            lastGames: [
+              { score: 1500, result: 'Победа', time: '30 мин' },
+              { score: 1200, result: 'Поражение', time: '25 мин' },
+              { score: 1600, result: 'Победа', time: '35 мин' },
+              { score: 1300, result: 'Поражение', time: '28 мин' },
+              { score: 1400, result: 'Победа', time: '32 мин' },
+            ],
+          },
+          leaderboard: [
+            { nickname: 'w3b-c0d3r', wins: 30, totalGames: 50, rating: 1590 },
+            { nickname: 'Player2', wins: 25, totalGames: 45, rating: 1750 },
+            { nickname: 'Player3', wins: 20, totalGames: 40, rating: 1600 },
+            { nickname: 'Player4', wins: 15, totalGames: 35, rating: 1550 },
+            { nickname: 'Player5', wins: 10, totalGames: 30, rating: 1400 },
+          ],
+        };
+      },
+      methods: {
+        async getData() {
+          const response = await axios.get('http://77.232.138.173:3000/users', {
+            headers: {
+              'accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          });
+          console.log(response)
+        }
+      },
+      mounted() {
+        this.leaderboard.sort((a, b) =>  b.rating - a.rating)
+        this.getData()
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+    /* adaptive mobile style*/
+    @media screen and (max-width: 600px) {
+        table {
+            font-size: 0.9em;
+        }
+
+        th, td {
+            padding: 5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        img {
+            width: 100%;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        #information {
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    }
+</style>

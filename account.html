@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Личный кабинет</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+    <body>
+        <div id="app" class="container">
+            <h1 class="mt-5">Личный кабинет</h1>
+        </div>
+    </body>
+</html>
+
+<script>
+
+    let response = axios.get('http://77.232.138.173:3000/users', {
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    
+    console.log(response)
+
+</script>
