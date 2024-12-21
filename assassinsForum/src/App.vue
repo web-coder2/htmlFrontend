@@ -53,8 +53,7 @@ import { RouterView } from 'vue-router'
 <style scoped>
 .sidebar {
   padding: 1rem;
-  height: calc(100vh - 56px);
+  height: 100vh;
   overflow-y: auto;
 }
 </style>
-
