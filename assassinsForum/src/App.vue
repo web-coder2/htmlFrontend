@@ -14,7 +14,7 @@
             <router-link to="/test" class="nav-link">Test</router-link>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">  <!-- Search form -->
+        <form class="form-inline my-2 my-lg-0" id="searchForm">  <!-- Search form -->
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -47,13 +47,35 @@
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router'
+  import { RouterView } from 'vue-router'
 </script>
 
 <style scoped>
-.sidebar {
-  padding: 1rem;
-  height: 100vh;
-  overflow-y: auto;
-}
+
+  .sidebar {
+    padding: 1rem;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 480px) {
+    .sidebar {
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    #searchForm {
+      display: flex;
+    }
+
+    .form-control {
+      width: 75%;
+    }
+
+    .btn {
+      margin-left: 10px;
+    }
+
+  }
+
 </style>

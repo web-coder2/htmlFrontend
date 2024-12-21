@@ -11,12 +11,46 @@
 		В 1191 году Аль-Муалим с помощью Яблока Эдема подчинил население города, в том числе и ассасинов, находящихся в крепости. Планы своего повелителя сорвал Альтаир ибн Ла-Ахад, вернув горожан в нормальное состояние. Когда Альтаир взял на себя руководство Орденом, он превратил Масиаф в святилище знаний и исцеления, распахнув двери крепости для новобранцев со всего мира.</p>
 		<img src="https://avatars.mds.yandex.net/i?id=2a227ffe6af63166c5e564dd17184bec-5869361-images-thumbs&n=13" class="img-fluid ml-3">
 	</div>
+	<div class="form-group mt-3">
+		<label for="selecter">Выберите город где убьете тамплиера</label>
+		<select class="form-control" style="max-width: 80%;" id="selecter" v-model="defaultLocs">
+			<option v-for="(item) in ac1Locs">{{ item }}</option>
+		</select>
+	</div>
+	<h4 class="text-dark" v-html="enimies"></h4>
 </template>
+
+<style type="text/css">
+	@media (max-width:  480px) {
+		.d-flex {
+			display: block !important;
+		}
+	}
+</style>
 
 <script>
 
 export default {
-  name: 'AC1'
+  name: 'AC1',
+  data() {
+  	return {
+  		ac1Locs: ["Masiaf", "Damascus", "Jerusalim", "Acre", "Ursuf"],
+  		defaultLocs: "Damascus"
+  	}
+  },
+  computed: {
+  	enimies() {
+  		if (this.defaultLocs == "Damascus") {
+  			return `Запоминай твои враги: <span class="text-danger">Тамир, Абу аль Нуквод, Джубаир</span>`
+  		} else if (this.defaultLocs == "Jerusalim") {
+  			return `В Иерусалиме ты должен убить: <span class="text-danger">Таллала и Робера де Сабле</span>`
+  		} else if (this.defaultLocs == "Acre") {
+  			return `Твои враги: <span class="text-danger">Гарнье де Наплуз, Монферат и Арсул</span>`
+  		} else {
+  			return `Твой враг не только <span class="text-success"> Робер де Сабле </span> был но и <span class="text-warning"> Аль Муалим </span>`
+  		}
+  	}
+  }
 };
 
 </script>

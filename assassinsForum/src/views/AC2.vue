@@ -8,6 +8,14 @@
 	</div>
 </template>
 
+<style type="text/css">
+	@media (max-width:  480px) {
+		.d-flex {
+			display: block !important;
+		}
+	}
+</style>
+
 <script>
 
 export default {
