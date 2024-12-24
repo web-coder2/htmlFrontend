@@ -8,10 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <router-link to="/" class="nav-link">Home</router-link>
+            <router-link to="/" class="nav-link text-light">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/test" class="nav-link">Test</router-link>
+            <router-link to="/test" class="nav-link text-light">Test</router-link>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" id="searchForm">  <!-- Search form -->
@@ -51,6 +51,15 @@
 </script>
 
 <style scoped>
+
+  .navbar {
+    background-color: black !important;
+  }
+
+  .list-group-item:hover {
+     background-color: rgb(0, 0, 0) !important;
+     border-radius: 25px;
+  }
 
   .sidebar {
     padding: 1rem;
