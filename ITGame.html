@@ -173,11 +173,25 @@
                 ],
             };
         },
+        methods: {
+            async getData() {
+                try {
+                    const response = await fetch('http://77.232.138.173:3000/users');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    this.player = await response.json();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        },
         beforeMount() {
             this.isDesktop = window.innerWidth > 480;
             this.leaderboard = this.leaderboard.sort((a, b) => {
                 return b.rating - a.rating;
             })
+            this.getData();
         }
     });
 
