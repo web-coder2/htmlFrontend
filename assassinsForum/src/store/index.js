@@ -6,6 +6,7 @@ const store = createStore({
         assassa: "w3b-c0d3r",
         revelationsCity: ["Masiaf", "Stambul"],
         assassinName: "Altair Ibn La Ahad",
+        number: 10,
     },
     getters: {
         sortedArray: (state) => {
@@ -18,6 +19,14 @@ const store = createStore({
     mutations: {
         changeAcName(state, newName) {
             state.assassinName = newName
+        },
+        changeNumber(state, newNum) {
+            state.number += newNum
+        }
+    },
+    actions: {
+        changeNumber(context, payload) {
+            context.commit('changeNumber', payload)
         }
     }
 })

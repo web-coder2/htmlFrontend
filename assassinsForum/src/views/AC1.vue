@@ -19,6 +19,7 @@
 	</div>
 	<h4 class="text-dark" v-html="enimies"></h4>
 	<input v-model="newAcName" placeholder="input new AC name folower" class="form-control" style="width: 30%;" @keyup.enter="changeName()">
+	<NumberChanger></NumberChanger>
 </template>
 
 <style type="text/css">
@@ -31,8 +32,13 @@
 
 <script>
 
+import NumberChanger from "../components/NumberChanger.vue"
+
 export default {
   name: 'AC1',
+  components: {
+	NumberChanger,
+  },
   data() {
   	return {
   		ac1Locs: ["Masiaf", "Damascus", "Jerusalim", "Acre", "Ursuf"],
