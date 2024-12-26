@@ -1,5 +1,5 @@
 <template>
-	<h3 class="text-success">Assassins creed revelations</h3>
+	<h3 class="text-success">Assassins creed revelations .... Welcome <span class="text-danger">{{ acName }}</span></h3>
 	<p class="text-dark">третья часть трилогии Эцио про то как старый Эцио пошел в Масиаф в библиотеку Альтаира чтобы зунать истину. Там на него напали тамплиеры но он их всех поубивал.</p>
 	<p class="text-dark">Позже Эцио приплыл в Стамбул там он искал ключи памяти воспоминаний Альтаира находит братство в Стамбуле и уибвает тамплиеров в власти потом приходит в Масиаф и общается с Дезмондом</p>
 	<div class="container d-flex">
@@ -8,6 +8,14 @@
 		Огромный игровой мир простирается от горной крепости ассасинов времен третьего Крестового похода в городе Масиаф до экзотического Константинополя, бриллианта в короне Османской Империи XVI века. Орлиное Зрение Эцио не потерял и мудрость щедро наградит его Орлиным Чувством, которое позволяет предугадать расположение и последующие действия врага.</p>
 		<img src="https://avatars.mds.yandex.net/i?id=2a00000179eecc474bd1320bc8dddfac65d3-4463294-images-thumbs&n=13" class="img-fluid ml-3">
 	</div>
+	<div class="container">
+		<h5>места по которым бродил <span style="color: green; font-family: cursive;">{{ name }}</span>:</h5>
+		<ul>
+            <li v-for="areal in areals" :key="areal" class="text-primary">{{ areal }}</li>
+        </ul>
+	</div>
+	<h4 class="text-dark" v-html="enimies"></h4>
+	<input v-model="newAcName" placeholder="input new AC name folower" class="form-control" style="width: 30%;" @keyup.enter="changeName()">
 </template>
 
 <style type="text/css">
@@ -21,7 +29,26 @@
 <script>
 
 export default {
-  name: 'revelations'
+  name: 'revelations',
+  data() {
+	return {
+		name: "Ezio Auditore De Florence"
+	}
+  },
+  methods: {
+	changeName() {
+		this.$store.commit("changeAcName", this.newAcName)
+		this.newAcName = ""
+	}
+  },
+  computed: {
+	areals() {
+      return this.$store.state.revelationsCity;
+    },
+	acName() {
+		return this.$store.state.assassinName
+	}
+  }
 };
 
 </script>

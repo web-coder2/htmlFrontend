@@ -1,5 +1,5 @@
 <template>
-	<h3 class="text-success">Assassins creed 1</h3>
+	<h3 class="text-success">Assassins creed 1 .... Welcome <span class="text-danger">{{ acName }}</span></h3>
 	<p class="text-dark">первая часть этой игры будет про Альтари Ибн Ла Ахада = ассассина из Сирии который был в ордене с рождения и в 24 года стал лидером ассассинов уровня Дай (Дай = звание одних из самых крутых хашишинов)</p>
 	<div class="container d-flex">
 		<img src="https://avatars.mds.yandex.net/get-entity_search/2269087/952103147/SUx182" class="img-fluid">
@@ -18,6 +18,7 @@
 		</select>
 	</div>
 	<h4 class="text-dark" v-html="enimies"></h4>
+	<input v-model="newAcName" placeholder="input new AC name folower" class="form-control" style="width: 30%;" @keyup.enter="changeName()">
 </template>
 
 <style type="text/css">
@@ -35,9 +36,10 @@ export default {
   data() {
   	return {
   		ac1Locs: ["Masiaf", "Damascus", "Jerusalim", "Acre", "Ursuf"],
-  		defaultLocs: "Damascus"
-  	}
-  },
+  		defaultLocs: "Damascus",
+		newAcName: "",
+    	}
+	},
   computed: {
   	enimies() {
   		if (this.defaultLocs == "Damascus") {
@@ -49,7 +51,16 @@ export default {
   		} else {
   			return `Твой враг не только <span class="text-success"> Робер де Сабле </span> был но и <span class="text-warning"> Аль Муалим </span>`
   		}
-  	}
+  	},
+	acName() {
+		return this.$store.state.assassinName
+	}
+  },
+  methods: {
+	changeName() {
+		this.$store.commit("changeAcName", this.newAcName)
+		this.newAcName = ""
+	}
   }
 };
 

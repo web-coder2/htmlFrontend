@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-success">Welcome на форум игроков assassins creed</h3>
+  <h3 class="text-success">Welcome на форум игроков assassins creed <span class="text-danger">{{ AcName }}</span></h3>
   <p class="text-dark">здесь вы увидите информацию о частях игры локации герои время событий места и цели ассассинов</p>
   <div class="container bg-dark">
     <h3 class="text-light text-center">Assassins creed Forum</h3>
@@ -36,3 +36,15 @@
   }
 
 </style>
+
+<script>
+
+  export default {
+    computed: {
+      AcName() {
+        return this.$store.state.assassinName
+      }
+    }
+  }
+
+</script>
