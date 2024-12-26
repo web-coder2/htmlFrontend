@@ -18,8 +18,10 @@
 		</select>
 	</div>
 	<h4 class="text-dark" v-html="enimies"></h4>
-	<input v-model="newAcName" placeholder="input new AC name folower" class="form-control" style="width: 30%;" @keyup.enter="changeName()">
-	<NumberChanger></NumberChanger>
+	<div class="asd">
+		<input v-model="newAcName" placeholder="input new AC name folower" class="form-control" style="width: 30%;" @keyup.enter="changeName()">
+		<NumberChanger></NumberChanger>
+	</div>
 </template>
 
 <style type="text/css">
@@ -27,6 +29,13 @@
 		.d-flex {
 			display: block !important;
 		}
+		.asd {
+			display: block !important;
+            margin-bottom: 10px;
+		}
+	}
+	.asd {
+		display: flex;
 	}
 </style>
 
