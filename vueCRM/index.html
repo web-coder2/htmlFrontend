@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CRM on Vue.js</title>
+    </head>
+    <body>
+        <div id="app">
+
+            <div v-if="siteState == 'login'" class="login-page">
+                <div class="login-form">
+                    <h3 class="login-title">Авторизация</h3>
+                    <input placeholder="login" v-model="login" type="text" class="login-input">
+                    <input v-model="password" placeholder="password" type="password" class="login-input" @keyup.enter="loginer()">
+                    <button @click="loginer()" class="form-btn">Login</button>
+                    <p v-if="unlogin" class="error-message">{{ unlogin }}</p>
+                </div>
+            </div>
+
+            <div v-if="siteState == 'profile'" class="profile">
+                <h3 class="profile-title">Профиль юзера</h3>
+                <p class="profile-info">Имя: {{ name }}</p>
+                <p class="profile-info">Фамилия: {{ surname }}</p>
+                <p class="profile-info">Роль: {{ role }}</p>
+                <button @click="logout()" class="form-btn">Logout</button>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    </body>
+</html>
+
+<script>
+
+    let app = new Vue ({
+        el: "#app",
+        data: {
+            title: "CRM on VUE.js",
+            login: "",
+            password: "",
+            unlogin: "",
+            name: "",
+            surname: "",
+            role: "",
+            siteState: "login",
+            users: [
+                {"login": "web-coder", "password": "web-coder123", "role": "Admin", "name": "Svyat", "surname": "Josua"},
+                {"login": "tester", "password": "tester123", "role": "Tester", "name": "John", "surname": "Doe"},
+                {"login": "guest", "password": "guest123", "role": "Guest", "name": "Guest", "surname": "User"},
+            ],
+            siteState: "login"
+        },
+        methods: {
+            loginer() {
+                let user = this.users.find(item => item.login === this.login && item.password === this.password);
+                if (user) {
+                    this.siteState = "profile";
+                    this.name = user.name;
+                    this.surname = user.surname;
+                    this.role = user.role;
+                    this.unlogin = "";
+                    this.login = "";
+                    this.password = "";
+                } else {
+                    this.login = ""
+                    this.password = "";
+                    this.unlogin = "Invalid password";
+                    setTimeout(() => {
+                        this.unlogin = "";
+                    }, 2000);
+                }
+            },
+            logout() {
+                this.siteState = "login";
+                this.name = "";
+                this.surname = "";
+                this.role = "";
+                this.unlogin = "";
+            }
+        }
+    })
+
+</script>
+
+<style>
+
+   .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+   }
+   .login-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #751590;
+    font-weight: bold;
+    text-align: center;
+   }
+   .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    padding-left: 40px;
+    padding-right: 40px;
+   }
+   .login-input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: aliceblue;
+    color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+   }
+   .form-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4900ae;
+    color: white;
+    border: none;
+    border-radius: 5px;
+   }
+   .error-message {
+    color: rgb(165, 24, 24);
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+   }
+   .profile {
+    display: block;
+    justify-content: start;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgb(226, 228, 230);
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+   }
+   .profile-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 30px;
+   }
+   .profile-info {
+    margin-bottom: 10px;
+    font-size: 20px;
+   }
+   .logout-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4900ae;
+    color: white;
+    border: none;
+    border-radius: 5px;
+   }
+   .logout-btn:hover {
+    background-color: #340078;
+   }
+
+</style>
