@@ -22,7 +22,35 @@
                 <p class="profile-info">Фамилия: {{ surname }}</p>
                 <p class="profile-info">Роль: {{ role }}</p>
                 <button @click="logout()" class="form-btn">Logout</button>
+                <div v-if="role == 'admin'" class="card-container">
+                    <div v-for="(item, index) in users" 
+                    :class="{'admin-card': item.role === 'admin', 'user-card': item.role !== 'admin'}">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ item.name }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Логин: {{ item.login }}</p>
+                            <p :style="{'color': item.role == 'admin' ? 'red' : 'black'}">Роль: {{ item.role }}</p>
+                        </div>
+                    </div>
+                </div>
+                <button @click="siteState='createUser'" v-if="role == 'admin'" class="form-btn">Создать нового пользователя</button>
             </div>
+
+            <div v-if="siteState == 'createUser'" class="create-user">
+                <h3 class="create-user-title">Создать нового пользователя</h3>
+                <input v-model="newUser.name" placeholder="name" type="text" class="login-input" required><br>
+                <input v-model="newUser.surname" placeholder="surname" type="text" class="login-input" required><br>
+                <input v-model="newUser.login" placeholder="login" type="text" class="login-input" required><br>
+                <input v-model="newUser.password" placeholder="password" type="password" class="login-input" required><br>
+                <select v-model="newUser.role" class="login-input" style="width: 180px;">
+                    <option value="admin">admin</option>
+                    <option value="user">user</option>
+                </select><br>
+                <button @click="createUser()" class="form-btn">Создать</button>
+                <h4 style="color: green; font-size: 20px;" v-if="unlogin.length > 0">{{ unlogin }}</h4>
+            </div>
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     </body>
@@ -42,11 +70,20 @@
             role: "",
             siteState: "login",
             users: [
-                {"login": "web-coder", "password": "web-coder123", "role": "Admin", "name": "Svyat", "surname": "Josua"},
-                {"login": "tester", "password": "tester123", "role": "Tester", "name": "John", "surname": "Doe"},
-                {"login": "guest", "password": "guest123", "role": "Guest", "name": "Guest", "surname": "User"},
+                {"login": "web-coder", "password": "web-coder123", "role": "admin", "name": "Svyat", "surname": "Josua"},
+                {"login": "tester", "password": "tester123", "role": "user", "name": "John", "surname": "Doe"},
+                {"login": "guest", "password": "guest123", "role": "user", "name": "Guest", "surname": "User"},
+                {"login": "admin", "password": "admin123", "role": "admin", "name": "Admin", "surname": "Admin"},
+                {"login": "user", "password": "user123", "role": "user", "name": "User", "surname": "User"},
+                {"login": "manager", "password": "manager123", "role": "user", "name": "Hui Pizda", "surname": "Manager"},
             ],
-            siteState: "login"
+            newUser: {
+                name: "",
+                surname: "",
+                login: "",
+                password: "",
+                role: "admin"
+            }
         },
         methods: {
             loginer() {
@@ -65,7 +102,7 @@
                     this.unlogin = "Invalid password";
                     setTimeout(() => {
                         this.unlogin = "";
-                    }, 2000);
+                    }, 1500);
                 }
             },
             logout() {
@@ -74,6 +111,32 @@
                 this.surname = "";
                 this.role = "";
                 this.unlogin = "";
+            },
+            createUser() {
+                if (this.newUser.name == "" || this.newUser.surname == "" || this.newUser.login =="") {
+                    alert("Заполните все поля");
+                    return;
+                } else {
+                    this.users.push({
+                    login: this.newUser.login,
+                    password: this.newUser.password,
+                    role: this.newUser.role,
+                    name: this.newUser.name,
+                    surname: this.newUser.surname
+                })
+                }
+                this.newUser = {
+                    name: "",
+                    surname: "",
+                    login: "",
+                    password: "",
+                    role: "admin"
+                }
+                this.unlogin = "Юзер успешно добавлен"
+                setTimeout(() => {
+                    this.unlogin = "";
+                    this.siteState = "profile";
+                }, 1500);
             }
         }
     })
@@ -146,7 +209,6 @@
     font-size: 24px;
     font-weight: bold;
     background-color: rgb(226, 228, 230);
-    width: 300px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 15px;
@@ -159,6 +221,7 @@
    .profile-info {
     margin-bottom: 10px;
     font-size: 20px;
+    margin-left: 20px;
    }
    .logout-btn {
     margin-top: 10px;
@@ -170,6 +233,78 @@
    }
    .logout-btn:hover {
     background-color: #340078;
+   }
+   .admin-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f4f4f4;
+    width: 350px;
+   }
+   .user-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f4f4f4;
+    width: 350px;
+    color: black;
+   }
+   .card-header {
+    background-color: #756f6f;
+    padding: 10px;
+    color: white;
+   }
+   .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+   }
+   .card-body {
+    padding: 10px;
+   }
+   .card-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+   }
+   .create-user {
+    display: block;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #39353f;
+    color: white;
+    border-radius: 20px;
+    border: 4px dashed rgb(230, 219, 219);
+   }
+   @media screen and (max-width: 480px) {
+    .login-form {
+       width: 100%;
+     }
+     .card-container {
+       flex-direction: column;
+     }
+    .card-container.admin-card,
+    .card-container.user-card {
+        width: 100%;
+    }
+    .card-header,
+    .card-title,
+    .card-body {
+        text-align: center;
+    }
+    .logout-btn {
+        margin-top: 0;
+    }
+    .profile-info {
+        margin-bottom: 0;
+    }
+    .logout-btn:hover {
+        background-color: #340078;
+    }
    }
 
 </style>
