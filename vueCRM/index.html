@@ -2,9 +2,19 @@
 <html>
     <head>
         <title>CRM on Vue.js</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="app">
+
+            <div class="app-layout" v-if="siteState != 'login'">
+                <h4 class="layout-title">VUE-CRM</h4>
+                <div class="layout-menu">
+                    <p class="menu-item" @click="siteState = 'login'">Выйти</p>
+                    <p class="menu-item" v-if="role == 'admin'" @click="siteState = 'createUser'">создать нового юзера</p>
+                    <p class="menu-item" @click="siteState = 'profile'">профиль</p>
+                </div>
+            </div>
 
             <div v-if="siteState == 'login'" class="login-page">
                 <div class="login-form">
@@ -114,8 +124,11 @@
             },
             createUser() {
                 if (this.newUser.name == "" || this.newUser.surname == "" || this.newUser.login =="") {
-                    alert("Заполните все поля");
-                    return;
+                    this.unlogin = "Заполни все данные (админ хуев)"
+                    setTimeout(() => {
+                        this.unlogin = "";
+                    })
+                    return
                 } else {
                     this.users.push({
                     login: this.newUser.login,
@@ -142,169 +155,3 @@
     })
 
 </script>
-
-<style>
-
-   .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-   }
-   .login-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #751590;
-    font-weight: bold;
-    text-align: center;
-   }
-   .login-form {
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    height: 400px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    border-radius: 15px;
-    border: 1px solid #ccc;
-    padding-left: 40px;
-    padding-right: 40px;
-   }
-   .login-input {
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 15px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    background-color: aliceblue;
-    color: #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-   }
-   .form-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4900ae;
-    color: white;
-    border: none;
-    border-radius: 5px;
-   }
-   .error-message {
-    color: rgb(165, 24, 24);
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-   }
-   .profile {
-    display: block;
-    justify-content: start;
-    margin-left: 20px;
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    background-color: rgb(226, 228, 230);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 15px;
-   }
-   .profile-title {
-    color: #333;
-    font-weight: bold;
-    font-size: 30px;
-   }
-   .profile-info {
-    margin-bottom: 10px;
-    font-size: 20px;
-    margin-left: 20px;
-   }
-   .logout-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4900ae;
-    color: white;
-    border: none;
-    border-radius: 5px;
-   }
-   .logout-btn:hover {
-    background-color: #340078;
-   }
-   .admin-card {
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f4f4f4;
-    width: 350px;
-   }
-   .user-card {
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f4f4f4;
-    width: 350px;
-    color: black;
-   }
-   .card-header {
-    background-color: #756f6f;
-    padding: 10px;
-    color: white;
-   }
-   .card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-   }
-   .card-body {
-    padding: 10px;
-   }
-   .card-container {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-   }
-   .create-user {
-    display: block;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #39353f;
-    color: white;
-    border-radius: 20px;
-    border: 4px dashed rgb(230, 219, 219);
-   }
-   @media screen and (max-width: 480px) {
-    .login-form {
-       width: 100%;
-     }
-     .card-container {
-       flex-direction: column;
-     }
-    .card-container.admin-card,
-    .card-container.user-card {
-        width: 100%;
-    }
-    .card-header,
-    .card-title,
-    .card-body {
-        text-align: center;
-    }
-    .logout-btn {
-        margin-top: 0;
-    }
-    .profile-info {
-        margin-bottom: 0;
-    }
-    .logout-btn:hover {
-        background-color: #340078;
-    }
-   }
-
-</style>
