@@ -4,31 +4,31 @@ body {
     padding: 0;
 }
 .login-page {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
 }
 .login-title {
-font-size: 24px;
-margin-bottom: 20px;
-color: #751590;
-font-weight: bold;
-text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #751590;
+    font-weight: bold;
+    text-align: center;
 }
 .login-form {
-display: flex;
-flex-direction: column;
-width: 600px;
-height: 400px;
-border-radius: 10px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-margin: 20px;
-border-radius: 15px;
-border: 1px solid #ccc;
-padding-left: 40px;
-padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 .login-input {
     margin-bottom: 10px;
@@ -46,10 +46,16 @@ padding-right: 40px;
 .form-btn {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #4900ae;
+    background-color: #0f642d;
     color: white;
     border: none;
     border-radius: 5px;
+}
+.form-btn:hover {
+    background-color: #419752;
+    box-shadow: -5px -5px 10px rgb(133, 145, 21), 5px 5px 10px rgb(230, 85, 37);
+    border-radius: 15px;
+    transition: box-shadow 0.8s ease, border-radius 0.8s ease, margin-top 0.4s ease;
 }
 .error-message {
     color: rgb(165, 24, 24);
@@ -84,58 +90,58 @@ padding-right: 40px;
     margin-left: 50px;
 }
 .profile-title {
-color: #333;
-font-weight: bold;
-font-size: 30px;
+    color: #333;
+    font-weight: bold;
+    font-size: 30px;
 }
 .profile-info {
-margin-bottom: 10px;
-font-size: 20px;
-margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin-left: 20px;
 }
 .logout-btn {
-margin-top: 10px;
-padding: 10px 20px;
-background-color: #4900ae;
-color: white;
-border: none;
-border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4900ae;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 .logout-btn:hover {
-background-color: #340078;
+    background-color: #340078;
 }
 .admin-card {
-margin-bottom: 20px;
-border-radius: 10px;
-border: 1px solid #ccc;
-padding: 10px;
-background-color: #f4f4f4;
-width: 350px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f4f4f4;
+    width: 350px;
 }
 .user-card {
-margin-bottom: 20px;
-border-radius: 10px;
-border: 1px solid #ccc;
-padding: 10px;
-background-color: #f4f4f4;
-width: 350px;
-color: black;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f4f4f4;
+    width: 350px;
+    color: black;
 }
 .card-header {
-background-color: #756f6f;
-padding: 10px;
-color: white;
-border-radius: 25px;
+    background-color: #756f6f;
+    padding: 10px;
+    color: white;
+    border-radius: 25px;
 }
 .card-title {
-font-size: 20px;
-font-weight: bold;
-margin-bottom: 10px;
-display: flex;
-align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 .card-body {
-padding: 10px;
+    padding: 10px;
 }
 .card-container {
     margin-top: 20px;
@@ -149,19 +155,17 @@ padding: 10px;
     padding: 20px;
     background-color: #a7a3ab;
     color: white;
-    border-radius: 10px;
-    margin-left: 210px;
+    margin-left: 200px;
 }
 .create-user-collapse {
     display: block;
     padding: 20px;
     background-color: #a097a8;
     color: white;
-    border-radius: 30px;
-    margin-left: 60px;
+    margin-left: 50px;
 }
 .app-layout {
-    background-color: purple;
+    background-color: rgb(20, 124, 46);
     height: 100vh;
     position: fixed;
 }
@@ -183,10 +187,10 @@ padding: 10px;
 }
 @media screen and (max-width: 480px) {
     .login-form {
-    width: 100%;
+        width: 100%;
     }
     .card-container {
-    flex-direction: column;
+        flex-direction: column;
     }
     .card-container.admin-card,
     .card-container.user-card {
@@ -209,14 +213,20 @@ padding: 10px;
 }
 
 .menu-item {
-    background-color: #5a0472;
+    background-color: #179d36;
     border-radius: 20px;
     color: white;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
     margin-left: 5%;
     max-width: 70%;
     display: flex; 
     align-items: center;
     text-align: end;
+}
+.menu-item:hover {
+    background-color: #28a848;
+    transition: background-color 0.7s ease;
+    box-shadow: inset 5px 5px 10px rgb(238, 165, 56), inset -5px -5px 10px rgb(202, 222, 20);
+    padding: 10px;
 }
