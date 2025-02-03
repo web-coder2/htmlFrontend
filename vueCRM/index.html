@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div v-if="siteState == 'profile'" class="profile">
+            <div v-if="siteState == 'profile'" :class="{'profile' : isBarShow , 'profile-collapse' : !isBarShow}">
                 <h3 class="profile-title">Профиль юзера</h3>
                 <p class="profile-info">Имя: {{ name }}</p>
                 <p class="profile-info">Фамилия: {{ surname }}</p>
@@ -59,7 +59,7 @@
                 <button @click="siteState='createUser'" v-if="role == 'admin'" class="form-btn">Создать нового пользователя</button>
             </div>
 
-            <div v-if="siteState == 'createUser'" class="create-user">
+            <div v-if="siteState == 'createUser'" :class="{'create-user' : isBarShow , 'create-user-collapse' : !isBarShow}">
                 <h3 class="create-user-title">Создать нового пользователя</h3>
                 <input v-model="newUser.name" placeholder="name" type="text" class="login-input" required><br>
                 <input v-model="newUser.surname" placeholder="surname" type="text" class="login-input" required><br>
