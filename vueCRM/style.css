@@ -285,8 +285,8 @@ body {
     border: none;
     border-radius: 50%;
     position: fixed;
-    margin-top: 27vh;
-    margin-left: 64vw;
+    margin-top: 22vh;
+    margin-left: 74vw;
 }
 .modal-body {
     text-align: center;
@@ -298,4 +298,5 @@ body {
     width: 50vw;
     margin-left: 25vw;
     padding-top: 30px;
+    background-color: rgba(30, 29, 29, 0.85)
 }
