@@ -230,3 +230,72 @@ body {
     box-shadow: inset 5px 5px 10px rgb(238, 165, 56), inset -5px -5px 10px rgb(202, 222, 20);
     padding: 10px;
 }
+
+.offers {
+    display: block;
+    margin-left: 250px;
+    padding: 20px;
+}
+.offers-collapse {
+    display: block;
+    margin-left: 100px;
+    padding: 20px;
+}
+.offer-city {
+    background-color: #a69e9e;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    padding-left: 30px;
+    border-radius: 15px;
+}
+.offer-info {
+    margin-left: 40px;
+    background-color: #a7a3ab;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    color: white;
+    padding-left: 30px;
+    border-radius: 15px;
+}
+.offers-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.modal-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+    justify-content: center;
+    z-index: 1000;
+}
+.close-modal-btn {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    margin-top: 27vh;
+    margin-left: 64vw;
+}
+.modal-body {
+    text-align: center;
+    height: 50vh;
+    margin-top: 25vh;
+    /*background-color: #100e0e;
+    box-shadow: inset -6px -6px 20px rgb(6, 71, 23), inset 6px 6px 20px rgb(6, 131, 4);
+    opacity: 0.8;*/
+    width: 50vw;
+    margin-left: 25vw;
+    padding-top: 30px;
+}

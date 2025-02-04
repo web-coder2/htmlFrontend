@@ -25,6 +25,10 @@
                         <i class="fa fa-fast-backward" aria-hidden="true" :style="{'margin-left': isBarShow ? '0px' : '15%'}"></i>
                         <p v-if="isBarShow == true" style="margin-left: 10px;">Выйти</p>
                     </div>
+                    <div class="menu-item" v-if="role == 'admin'" @click="siteState = 'offers'">
+                        <i class="fa fa-file-alt" aria-hidden="true" :style="{'margin-left': isBarShow ? '0px' : '15%'}"></i>
+                        <p v-if="isBarShow == true" style="margin-left: 10px;">офферы</p>
+                    </div>
                 </div>
             </div>
 
@@ -73,6 +77,31 @@
                 <h4 style="color: green; font-size: 20px;" v-if="unlogin.length > 0">{{ unlogin }}</h4>
             </div>
 
+            <div v-if="siteState == 'offers'" :class="{'offers' : isBarShow , 'offers-collapse' : !isBarShow}">
+                <h3 class="offers-title">страница с офферами</h3>
+                <div v-for="(item, index) in offersArray">
+                    <h4 class="offer-city">Город: <strong style="color: green;">{{ item.city }}</strong></h4>
+                    <div v-for="(item2, index2) in item.selfOffers" class="offer-info" @click="showOffer(item2, index2)">
+                        <h4>Компания: <strong style="color: green;">{{ item2.company }}</strong></h4>
+                        <h4>Разработчик: <strong style="color: green;">{{ item2.developer }}</strong></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-window" v-if="isModalShow">
+                <button class="close-modal-btn" @click="closeModal()">
+                    <i style="color: white; font-size: 30px;" class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <div class="modal-body">
+                    <h2 style="color: aliceblue;">Информация об оффере</h3>
+                    <h4 style="color: antiquewhite;">Город: <strong style="color: white;">{{ modalOffer.city }}</strong></h4>
+                    <h4 style="color: antiquewhite;">Компания: <strong style="color: white;">{{ modalOffer.company }}</strong></h4>
+                    <h4 style="color: antiquewhite;">Разработчик: <strong style="color: white;">{{ modalOffer.developer }}</strong></h4>
+                    <h4 style="color: antiquewhite;">Место: <strong style="color: white;">{{ modalOffer.area }}</strong></h4>
+                    <h4 style="color: antiquewhite;">Координаты: <strong style="color: white;">{{ modalOffer.coords }}</strong></h4>
+                </div>
+            </div>
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     </body>
@@ -106,8 +135,33 @@
                 password: "",
                 role: "admin",
             },
+            offersArray: [ // MOC DATA
+                {"city": "Moscow", "selfOffers": [
+                    {"city": "Moscow", "company" : "qwerty" , "developer" : "qwerty-developer" , "area": "moscow-city" , "coords": "3323.3833-12212.323"},
+                    {"city": "Moscow", "company": "asd-zxc" , "developer" : "asd-zxc-developer" , "area": "dubai-citi", "coords": "12323.443-13462.64"},
+                    {"city": "Moscow", "company": "lalala" , "developer" : "lalala-developer" , "area": "moscow-city", "coords": "8823.34563-12685.678"}
+                ]},
+                {"city": "New York", "selfOffers": [
+                    {"city": "New York", "company" : "admin" , "developer" : "admin-developer" , "area": "new-york-city", "coords": "12345.6789-11122.345"},
+                    {"city": "New York", "company": "user" , "developer" : "user-developer" , "area": "new-york-city2", "coords": "234234.34634-43523.545"},
+                    {"city": "New York", "company": "guest" , "developer" : "guest-developer" , "area": "new-york-city3", "coords": "345678.9012-56789.0123"}
+                ]},
+                {"city": "London", "selfOffers": [
+                    {"city": "London", "company" : "admin" , "developer" : "admin-developer" , "area": "london-city", "coords": "234567.8901-23456.789"},
+                    {"city": "London", "company" : "user" , "developer" : "user-developer" , "area": "london-city2", "coords": "124124-23423423"},
+                    {"city": "London", "company" : "guest" , "developer" : "guest-developer" , "area": "london-city3", "coords": "456789-67890.123"}
+                ]}
+            ],
+            modalOffer: {
+                city: "",
+                company: "",
+                developer: "",
+                area: "",
+                coords: "",
+            },
             isBarShow: true,
             barWidth: "200px",
+            isModalShow: false,
         },
         methods: {
             loginer() {
@@ -171,6 +225,20 @@
                     this.barWidth = "200px";
                 } else {
                     this.barWidth = "50px";
+                }
+            },
+            showOffer(offer, index) {
+                this.modalOffer = offer;
+                this.isModalShow = true;
+            },
+            closeModal() {
+                this.isModalShow = false;
+                this.modalOffer = {
+                    city: "",
+                    company: "",
+                    developer: "",
+                    area: "",
+                    coords: "",
                 }
             }
         }
