@@ -7,36 +7,61 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	<title>Forum AC</title>
 </head>
 <body style="background-color: black;">
 
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<div class="d-flex">
-			<img src="https://avatars.mds.yandex.net/i?id=e83f2322d3bd9b2db73521977f4d54744e59e163-5219346-images-thumbs&n=13" style="width: 40px;">
-	  		<a class="navbar-brand ml-3" href="/">AC-Forum</a>
-	  	</div>
+	<div id="app">
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="d-flex">
+				<img src="https://avatars.mds.yandex.net/i?id=e83f2322d3bd9b2db73521977f4d54744e59e163-5219346-images-thumbs&n=13" style="width: 40px;">
+		  		<a class="navbar-brand ml-3" href="/">AC-Forum</a>
+		  	</div>
 
-	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	    	<span class="navbar-toggler-icon"></span>
-	  	</button>
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
 
-	  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-	    	<ul class="navbar-nav">
-	      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
-	      		<li class="nav-item">
-	      			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
-				    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" href="/">assassins creed 1</a></div>
-				</li>
-	      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
-	    	</ul>
-	  	</div>
-	</nav>
+		  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		    	<ul class="navbar-nav">
+		      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
+		      		<li class="nav-item" v-if="allGames !== null">
+			      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
+						<div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" href="/">{{ item.title }}</a></div>
+					</li>
+		      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
+		    	</ul>
+		  	</div>
+		</nav>
 
-	<div class="container-fluid mt-5">
-		<h3 class="text-primary text-center">О форуме AC-Forum</h3>
-		<p class="mt-5 text-success col-md-6 offset-md-3 col-sm-12 text-center">В этом форуме ты найдешь все (которые создали) части по игре Assassins creed о тамплиерах и ассассинах и отом где они жили в каких замках в каких городах бегали чтобы убить свою цель скриншоты увидешь вот всю эту красоту о лоре игры и крч много еще всего этот форум создан для фан сообщества AC в фан-сайте</p>
+		<div class="container-fluid mt-5">
+			<h3 class="text-primary text-center">О форуме AC-Forum</h3>
+			<p class="mt-5 text-success col-md-6 offset-md-3 col-sm-12 text-center">В этом форуме ты найдешь все (которые создали) части по игре Assassins creed о тамплиерах и ассассинах и отом где они жили в каких замках в каких городах бегали чтобы убить свою цель скриншоты увидешь вот всю эту красоту о лоре игры и крч много еще всего этот форум создан для фан сообщества AC в фан-сайте</p>
+		</div>
 	</div>
 
 </body>
 </html>
+
+<script type="text/javascript">
+	
+	let app = new Vue({
+		el: "#app",
+		data: {
+			allGames: null
+		},
+		beforeMount() {
+			this.getGames()
+		},
+		methods: {
+			async getGames() {
+				let response = await fetch('/api/getGames', {
+					method: "GET",
+					headers: {'Content-Type' : 'application/json'}
+				}).then(response => response.json()).then(data => this.allGames = data.games)
+			},
+		},
+	})
+
+</script>

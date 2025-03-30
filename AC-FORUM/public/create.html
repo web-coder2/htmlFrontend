@@ -7,49 +7,111 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	<title>Forum AC</title>
 </head>
 <body style="background-color: black;">
 
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<div class="d-flex">
-			<img src="https://avatars.mds.yandex.net/i?id=e83f2322d3bd9b2db73521977f4d54744e59e163-5219346-images-thumbs&n=13" style="width: 40px;">
-	  		<a class="navbar-brand ml-3" href="/">AC-Forum</a>
-	  	</div>
+	<div id="app">
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="d-flex">
+				<img src="https://avatars.mds.yandex.net/i?id=e83f2322d3bd9b2db73521977f4d54744e59e163-5219346-images-thumbs&n=13" style="width: 40px;">
+		  		<a class="navbar-brand ml-3" href="/">AC-Forum</a>
+		  	</div>
 
-	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	    	<span class="navbar-toggler-icon"></span>
-	  	</button>
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
 
-	  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-	    	<ul class="navbar-nav">
-	      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
-	      		<li class="nav-item">
-	      			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
-				    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" href="/">assassins creed 1</a></div>
-				</li>
-	      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
-	    	</ul>
-	  	</div>
-	</nav>
+		  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		    	<ul class="navbar-nav">
+		      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
+		      		<li class="nav-item" v-if="allGames !== null">
+		      			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
+					    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" href="/">{{ item.title }}</a></div>
+					</li>
+		      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
+		    	</ul>
+		  	</div>
+		</nav>
 
-	<div class="container-fluid mt-5">
-		<h3 class="text-warning text-center">Ты хочешь создать новый блог</h3>
-		<div class="form-group col-md-6 offset-md-3 col-sm-12">
-			<input type="text" placeholder="Названии части игры" class="form-control bg-dark mt-3">
-			<input type="text" placeholder="сылка на скриншот этой части" class="form-control bg-dark mt-3">
-			<textarea class="form-control bg-dark mt-3" placeholder="расскажи о главных ассассинов в этой части"></textarea>
-			<input type="text" placeholder="сылка на скриншот этих ассассинов" class="form-control bg-dark mt-3">
-			<textarea type="text" placeholder="расскажи о главных тамплиеров в этой части" class="form-control bg-dark mt-3"></textarea>
-			<input type="text" placeholder="сылка на скриншот этих тамплиеров" class="form-control bg-dark mt-3">
-			<textarea type="text" placeholder="расскажи о базах где жили эти ассассины и по каким городам они там были" class="form-control bg-dark mt-3"></textarea>
-			<input type="text" placeholder="сылка на скриншот этих замков или городов" class="form-control bg-dark mt-3">
-			<div class="btn-group mt-5">
-				<button class="btn btn-outline-success">Добавитьь блог</button>
-				<button class="btn btn-outline-danger">Отменеть блог</button>
+		<div class="container-fluid mt-5">
+			<h3 class="text-warning text-center">Ты хочешь создать новый блог</h3>
+			<div class="form-group col-md-6 offset-md-3 col-sm-12">
+				<input type="text" placeholder="Названии части игры" class="form-control bg-dark mt-3 text-light" v-model="title">
+				<input type="text" placeholder="сылка на скриншот этой части" class="form-control bg-dark mt-3 text-light" v-model="hrefGame">
+				<textarea class="form-control bg-dark mt-3 text-light" placeholder="расскажи о главных ассассинов в этой части" v-model="assassins"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих ассассинов" class="form-control bg-dark mt-3 text-light" v-model="hrefAssassins">
+				<textarea type="text" placeholder="расскажи о главных тамплиеров в этой части" class="form-control bg-dark mt-3 text-light" v-model="tampliers"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих тамплиеров" class="form-control bg-dark mt-3 text-light" v-model="hrefTampliers">
+				<textarea type="text" placeholder="расскажи о базах где жили эти ассассины и по каким городам они там были" class="form-control bg-dark mt-3 text-light" v-model="assassinsBase"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих замков или городов" class="form-control bg-dark mt-3 text-light" v-model="hrefAssassinsBase">
+				<div class="btn-group mt-5">
+					<button class="btn btn-outline-success" @click="createGame()">Добавитьь блог</button>
+					<button class="btn btn-outline-danger" @click="resetGame()">Отменеть блог</button>
+				</div>
 			</div>
 		</div>
 	</div>
 
 </body>
 </html>
+
+<script type="text/javascript">
+	
+	let app = new Vue ({
+		el: "#app",
+		data: {
+			title: "",
+			hrefGame: "",
+			assassins: "",
+			hrefAssassins: "",
+			tampliers: "",
+			hrefTampliers: "",
+			assassinsBase: "",
+			hrefAssassinsBase: "",
+
+			allGames: null,
+		},
+		beforeMount() {
+			this.getGames()
+		},
+		methods: {
+			createGame() {			
+				let response = fetch('/api/createGame', {
+					method: 'POST',
+					headers: {'Content-Type' : 'application/json'},
+					body: JSON.stringify({
+						title: this.title,
+						hrefGame: this.hrefGame,
+						assassins: this.assassins,
+						hrefAssassins: this.hrefAssassins,
+						tampliers: this.tampliers,
+						hrefTampliers: this.hrefTampliers,
+						assassinsBase: this.assassinsBase,
+						hrefAssassinsBase: this.hrefAssassinsBase,
+					})
+				})
+
+				this.resetGame()
+			},
+			async getGames() {
+				let response = await fetch('/api/getGames', {
+					method: "GET",
+					headers: {'Content-Type' : 'application/json'}
+				}).then(response => response.json()).then(data => this.allGames = data.games)
+			},
+			resetGame() {
+				this.title = ""
+				this.hrefGame = ""
+				this.assassins = ""
+				this.hrefAssassins = ""
+				this.tampliers = ""
+				this.hrefTampliers = ""
+				this.assassinsBase = ""
+				this.hrefAssassinsBase = ""
+			}
+		}
+	})
+
+</script>
