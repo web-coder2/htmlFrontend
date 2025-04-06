@@ -28,7 +28,7 @@
 		      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
 		      		<li class="nav-item" v-if="allGames !== null">
 			      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
-						<div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" href="/">{{ item.title }}</a></div>
+						<div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" :href="'game/' + item._id">{{ item.title }}</a></div>
 					</li>
 		      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
 		    	</ul>

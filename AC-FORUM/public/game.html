@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<title>Forum AC</title>
+</head>
+<body style="background-color: black;">
+
+	<div id="app">
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="d-flex">
+				<img src="https://avatars.mds.yandex.net/i?id=e83f2322d3bd9b2db73521977f4d54744e59e163-5219346-images-thumbs&n=13" style="width: 40px;">
+		  		<a class="navbar-brand ml-3" href="/">AC-Forum</a>
+		  	</div>
+
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
+
+		  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		    	<ul class="navbar-nav">
+		      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
+		      		<li class="nav-item" v-if="allGames !== null">
+		      			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
+					    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" :href=" item._id">{{ item.title }}</a></div>
+					</li>
+		      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
+		    	</ul>
+		  	</div>
+		</nav>
+
+		<div class="container-fluid mt-5" v-if="gameData !== null">
+			<h1 class="text-center text-success">Welcome to assassins creed forum about game <span class="text-warning">{{ gameData.title }}</span></h1>
+			<h3 class="text-primary mt-5">В этой игре ты будешь играть за ассассинов <span class="text-danger">{{ gameData.assassins }}</span></h3>
+			<img class="img-fluid mt-3" :src="gameData.hrefAssassins" style="height: 300px; width: auto;">
+			<h3 class="text-primary mt-5">и за него будешь бегать по местам гед будешь тренироваться или убивать тамплиеров в <span class="text-danger">{{ gameData.assassinsBase }}</span></h3>
+			<img class="img-fluid mt-3" :src="gameData.hrefAssassinsBase" style="height: 300px; width: auto;">
+			<h3 class="text-primary mt-5">и твоими целями будут ТАмплиеры <span class="text-danger">{{ gameData.tampliers }}</span></h3>
+			<img class="img-fluid mt-3" :src="gameData.hrefTampliers" style="height: 300px; width: auto;">
+			<h3 class="text-primary mt-5">в общем будет очень весело и ничто в ней не будет истино и все дозволено в <span class="text-danger">{{ gameData.title }}</span></h3>
+			<img class="img-fluid mt-3" :src="gameData.hrefGame" style="height: 300px; width: auto;">
+		</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	let app = new Vue({
+		el: "#app",
+		data: {
+			gameData: null,
+			allGames: null,
+		},
+		beforeMount() {
+			this.getGames()
+			this.getCurrentGame()
+		},
+		methods: {
+			async getGames() {
+				let response = await fetch('/api/getGames', {
+					method: "GET",
+					headers: {'Content-Type' : 'application/json'}
+				}).then(response => response.json()).then(data => this.allGames = data.games)
+			},
+			async getCurrentGame() {
+				let fullPath = window.location.href
+				let currentGameIDX = fullPath.split('game/', 2)[1]
+				let API_url = `/game/get/${currentGameIDX}`
+
+				console.log(API_url)
+
+				const response = await fetch(API_url, {
+					method : "GET",
+					headers : {
+						"Content-Type" : 'application/json'
+					}
+				}).then(data => data.json()).then(resp => this.gameData = resp[0])
+				console.log(this.gameData)
+			}
+		},
+	})
+
+</script>

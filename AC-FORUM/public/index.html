@@ -28,7 +28,7 @@
 		      		<li class="nav-item"><a class="nav-link" href="/create">Создать блог</a></li>
 		      		<li class="nav-item" v-if="allGames !== null">
 		      			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Все ассассины</a>
-					    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" href="/">{{ item.title }}</a></div>
+					    <div class="dropdown-menu bg-dark"><a class="dropdown-item text-warning bg-dark" v-for="(item, idx) in allGames" :href="'game/' + item._id">{{ item.title }}</a></div>
 					</li>
 		      		<li class="nav-item"><a class="nav-link" href="/about">О форуме</a></li>
 		    	</ul>
@@ -46,14 +46,43 @@
 				<img class="card-img-top" :src="item.hrefGame" alt="Card image">
 			  	<div class="card-body">
 			    	<h4 class="card-title text-light text-center">{{ item.title }}</h4>
-			    	<p class="card-text text-light">{{ item.assassins }}</p>
-			    	<a href="/" class="btn btn-outline-danger text-ligth">посмотреть ассассина</a>
+					<!-- <p class="card-text text-light" style="height: 100px;overflow-y: auto;">{{ item.assassins }}</p> -->
+			    	<a :href="'game/' + item._id" class="btn btn-outline-success text-ligth">посмотреть ассассина</a>
+			    	<button @click="deleteGame(item._id)" class="btn btn-outline-danger text-ligth">удалить часть</button>
+			    	<button class="btn btn-outline-warning" @click="edited(idx)" data-toggle="modal" data-target="#myModal">редактирвоть игру</button>
 			  	</div>
 			</div>
 		</div>
 
-	</div>
 
+		<!-- The Modal -->
+		<div class="modal" id="myModal">
+		  <div class="modal-dialog bg-dark">
+		    <div class="modal-content bg-dark">
+
+		      <div class="modal-header bg-dark">
+		        <h4 class="modal-title text-light">редактировать {{ editedData.title }}</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+
+		      <div class="modal-body  bg-dark">
+		        <input type="text" placeholder="Названии части игры" class="form-control bg-dark mt-3 text-light" v-model="editedData.title">
+				<input type="text" placeholder="сылка на скриншот этой части" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefGame">
+				<textarea class="form-control bg-dark mt-3 text-light" placeholder="расскажи о главных ассассинов в этой части" v-model="editedData.assassins"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих ассассинов" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefAssassins">
+				<textarea type="text" placeholder="расскажи о главных тамплиеров в этой части" class="form-control bg-dark mt-3 text-light" v-model="editedData.tampliers"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих тамплиеров" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefTampliers">
+				<textarea type="text" placeholder="расскажи о базах где жили эти ассассины и по каким городам они там были" class="form-control bg-dark mt-3 text-light" v-model="editedData.assassinsBase"></textarea>
+				<input type="text" placeholder="сылка на скриншот этих замков или городов" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefAssassinsBase">
+				<button class="btn btn-outline-success mt-5" @click="saveEdit(editedData._id)" data-dismiss="modal">СОзранить изменения</button>
+		      </div>
+
+		    </div>
+		  </div>
+		</div>
+
+
+	</div>
 </body>
 </html>
 
@@ -62,7 +91,8 @@
 	let app = new Vue({
 		el: "#app",
 		data: {
-			allGames: null
+			allGames: null,
+			editedData: {},
 		},
 		beforeMount() {
 			this.getGames()
@@ -74,6 +104,29 @@
 					headers: {'Content-Type' : 'application/json'}
 				}).then(response => response.json()).then(data => this.allGames = data.games)
 			},
+			async deleteGame(idx) {
+
+				let response = await fetch(`/api/deleteGame/${idx}`, {
+					method: "DELETE",
+					headers: {'Content-Type' : 'application/json'}
+				})
+
+				this.getGames()
+			},
+			edited(idx) {
+				this.editedData = this.allGames[idx]
+			},
+			async saveEdit(gameIDX) {
+				const response = await fetch(`/game/edit/${gameIDX}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type" : "application/json"
+					},
+					body: JSON.stringify({
+						"edited":  this.editedData
+					})
+				})
+			}
 		},
 	})
 

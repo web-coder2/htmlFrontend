@@ -42,12 +42,76 @@ server.get('/about', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'about.html'))
 })
 
+server.get('/game/:index', async (req, res) => {
+
+	try {
+		res.sendFile(path.join(__dirname, 'public', 'game.html'))
+	} catch (e) {
+		console.log('error !!!!!!!! ', e)
+		res.status(500).send('error')
+	}
+
+})
+
+server.get('/game/get/:index', async (req, res) => {
+
+	try {
+		const idx = req.params.index
+		const gameData = await game.find({
+			"_id" : idx
+		})
+		res.status(200).send(gameData)
+	} catch (e) {
+		console.log('error ********* ', e)
+		res.status(500).send('error')
+	}
+
+})
+
+server.put('/game/edit/:index', async (req, res) => {
+
+	try {
+
+		const gameIDX = req.params.index
+		const editedData = req.body.edited
+
+		const result = await game.updateOne(
+			{'_id' : gameIDX},
+			{$set : editedData}
+		)
+
+		if (result.modifiedCount === 1) {
+			res.status(200).send('good updated )))')
+		}
+
+	} catch (e) {
+		console.log('error !!!!!!!!!!! ', e)
+		res.status(500).send('error')
+	}
+
+})
+
 
 // GET / POST ЗАПРОСЫ ДЯЛ ДОБАВЛЕНИЯ РЕДАКТИРОВАНИЯ И ПРОЧЕГО (ПОТОМ В ДИРЕКТОРИЮ ROUTES ДЕКОМПОЗИРУЮ А ПОКА НА ВРЕМЯ ТАК ПУСТЬ БУДЕТ)
 
 server.get('/api/getGames', async (req, res) => {
 	let games = await game.find()
 	res.json({'games' : games})
+})
+
+server.delete('/api/deleteGame/:index', async (req, res) => {
+
+	const idx = req.params.index
+	const response = await game.deleteOne({
+		'_id' : idx
+	})
+
+	if (response.deletedCount === 1) {
+		console.log(`ok deleted ${idx}`)
+	} else {
+		console.log('error')
+	}
+
 })
 
 server.post('/api/createGame', (req, res) => {
@@ -69,7 +133,7 @@ server.post('/api/createGame', (req, res) => {
 
 	} catch (e) {
 		console.log('ERROR ', e)
-		res.send(500)
+		res.status(500).send('error')
 	}
 
 
