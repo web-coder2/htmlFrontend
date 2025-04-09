@@ -41,16 +41,18 @@
 			<p class="text-info mt-5">Этот форум создан разрабочтиком <span class="text-success">w3b-c0d3r</span> для фан сообщества Assassins Creed где будут собираться люди по этой игре создавать блоги по определной части говорить о главных героев в этой части главынх тамплиеров какие там есть места о сеттинге чем он отличен от других частях можете добавить медиа для более крутой и вайбовой атмосферы форума крч делайте то как считаете нужно ибо - <span class="text-danger">НИЧТО не истино и ВСЕ дозволино</span></p>
 		</div>
 
-		<div class="d-flex justify-content-around mt-5" v-if="allGames !== null">
-			<div class="card bg-dark" style="width:400px" v-for="(item, idx) in allGames">
-				<img class="card-img-top" :src="item.hrefGame" alt="Card image">
-			  	<div class="card-body">
-			    	<h4 class="card-title text-light text-center">{{ item.title }}</h4>
+		<div class="row" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); grid-gap: 1rem;" v-if="allGames !== null">
+			<div class="card bg-dark col-sm-12 col-md-3" v-for="(item, idx) in allGames">
+				<img class="img-fluid" style="height: 150px;" :src="item.hrefGame" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title text-light text-center">{{ item.title }}</h4>
 					<!-- <p class="card-text text-light" style="height: 100px;overflow-y: auto;">{{ item.assassins }}</p> -->
-			    	<a :href="'game/' + item._id" class="btn btn-outline-success text-ligth">посмотреть ассассина</a>
-			    	<button @click="deleteGame(item._id)" class="btn btn-outline-danger text-ligth">удалить часть</button>
-			    	<button class="btn btn-outline-warning" @click="edited(idx)" data-toggle="modal" data-target="#myModal">редактирвоть игру</button>
-			  	</div>
+					<a :href="'game/' + item._id" class="btn btn-outline-success text-ligth w-100 mt-3">Подробнее</a>
+					<div class="btn-group w-100">
+						<button @click="deleteGame(item._id)" class="btn btn-outline-danger text-ligth mt-3 w-100">Удалить часть</button>
+						<button class="btn btn-outline-warning w-100 mt-3" @click="edited(idx)" data-toggle="modal" data-target="#myModal">Редактировать</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -74,7 +76,7 @@
 				<input type="text" placeholder="сылка на скриншот этих тамплиеров" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefTampliers">
 				<textarea type="text" placeholder="расскажи о базах где жили эти ассассины и по каким городам они там были" class="form-control bg-dark mt-3 text-light" v-model="editedData.assassinsBase"></textarea>
 				<input type="text" placeholder="сылка на скриншот этих замков или городов" class="form-control bg-dark mt-3 text-light" v-model="editedData.hrefAssassinsBase">
-				<button class="btn btn-outline-success mt-5" @click="saveEdit(editedData._id)" data-dismiss="modal">СОзранить изменения</button>
+				<button class="btn btn-outline-success mt-5" @click="saveEdit(editedData._id)" data-dismiss="modal">Сохранить изменения</button>
 		      </div>
 
 		    </div>

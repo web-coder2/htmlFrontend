@@ -36,17 +36,24 @@
 		</nav>
 
 		<div class="container-fluid mt-5" v-if="gameData !== null">
-			<h1 class="text-center text-success">Welcome to assassins creed forum about game <span class="text-warning">{{ gameData.title }}</span></h1>
-			<h3 class="text-primary mt-5">В этой игре ты будешь играть за ассассинов <span class="text-danger">{{ gameData.assassins }}</span></h3>
-			<img class="img-fluid mt-3" :src="gameData.hrefAssassins" style="height: 300px; width: auto;">
-			<h3 class="text-primary mt-5">и за него будешь бегать по местам гед будешь тренироваться или убивать тамплиеров в <span class="text-danger">{{ gameData.assassinsBase }}</span></h3>
-			<img class="img-fluid mt-3" :src="gameData.hrefAssassinsBase" style="height: 300px; width: auto;">
-			<h3 class="text-primary mt-5">и твоими целями будут ТАмплиеры <span class="text-danger">{{ gameData.tampliers }}</span></h3>
-			<img class="img-fluid mt-3" :src="gameData.hrefTampliers" style="height: 300px; width: auto;">
-			<h3 class="text-primary mt-5">в общем будет очень весело и ничто в ней не будет истино и все дозволено в <span class="text-danger">{{ gameData.title }}</span></h3>
-			<img class="img-fluid mt-3" :src="gameData.hrefGame" style="height: 300px; width: auto;">
+			<h1 class="text-center text-success">Welcome to assassins creed forum about game {{ gameData.title }}</h1>
+			<div class="row mt-5">
+				<h3 class="text-light col-sm-12 col-md-6">В этой игре ты будешь играть за ассассинов{{ gameData.assassins }}</h3>
+				<img class="img-fluid col-sm-12 col-md-6" :src="gameData.hrefAssassins" style="height: 500px; width: auto;">
+			</div>
+			<div class="row mt-5">
+				<img class="img-fluid col-sm-12 col-md-6" :src="gameData.hrefAssassinsBase" style="height: 500px; width: auto;">
+				<h3 class="text-light col-sm-12 col-md-6">и за него будешь бегать по местам гед будешь тренироваться или убивать тамплиеров в {{ gameData.assassinsBase }}</h3>
+			</div>
+			<div class="row mt-5">
+				<h3 class="text-light col-sm-12 col-md-6">и твоими целями будут ТАмплиеры {{ gameData.tampliers }}</h3>
+				<img class="img-fluid col-sm-12 col-md-6" :src="gameData.hrefTampliers" style="height: 500px; width: auto;">
+			</div>
+			<div class="row mt-5">
+				<img class="img-fluid col-sm-12 col-md-6" :src="gameData.hrefGame" style="height: 500px; width: auto;">
+				<h3 class="text-light col-sm-12 col-md-6">в общем будет очень весело и ничто в ней не будет истино и все дозволено в <span class="text-success">{{ gameData.title }}</span></h3>
+			</div>
 		</div>
-
 </body>
 </html>
 
