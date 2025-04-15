@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<title>Forum AC</title>
+</head>
+<body style="background-color: black;">
+
+	<div id="app">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <div class="card rounded shadow shadow-sm bg-dark">
+                                <div class="card-header">
+                                    <h3 class="mb-0 text-light">Войти на форум AC-FORUM</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form" role="form" id="formLogin">
+                                        <div class="form-group">
+                                            <label for="uname1" class="text-light">login</label>
+                                            <input type="text" class="form-control form-control-lg rounded-0 bg-dark text-light" name="uname1" id="uname1" required="">
+                                            <div class="invalid-feedback text-danger">Проверь все</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-light">Password</label>
+                                            <input type="password" class="form-control form-control-lg rounded-0 bg-dark text-light" id="pwd1" required="" autocomplete="new-password">
+                                            <div class="invalid-feedback text-danger">Проверь все</div>
+                                        </div>
+                                        <button class="btn btn-outline-danger btn-lg w-100" id="btnLogin">Войти</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	let app = new Vue({
+		el: "#app",
+		data: {
+            login: "",
+            password: "",
+        },
+		methods: {
+            async login() {
+                
+            }
+        },
+	})
+
+</script>
