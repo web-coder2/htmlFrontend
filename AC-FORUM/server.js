@@ -55,6 +55,10 @@ server.get('/about', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'about.html'))
 })
 
+server.get('/login', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public', 'login.html'))
+})
+
 server.get('/game/:index', async (req, res) => {
 
 	try {
