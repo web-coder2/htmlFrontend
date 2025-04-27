@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Forum AC</title>
+</head>
+<body style="background-color: black;">
+    <div id="app">
+        <div class="container">
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="authTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#login" data-toggle="tab">Логин</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#registration" data-toggle="tab">Зарегаться</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="login">
+                            <form @submit.prevent="login"> <!-- Предотвращаем стандартное поведение -->
+                                <div class="form-group">
+                                    <label for="loginEmail" class="text-success">Email</label>
+                                    <input v-model="loginEmail" class="form-control bg-dark text-success" id="loginEmail" placeholder="Введите email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginPassword" class="text-success">Пароль</label>
+                                    <input v-model="loginPassword" type="password" class="form-control bg-dark text-success" id="loginPassword" placeholder="Введите пароль" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Войти</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="registration">
+                            <form @submit.prevent="createAccount"> <!-- Предотвращаем стандартное поведение -->
+                                <div class="form-group">
+                                    <label for="regEmail" class="text-success">Email</label>
+                                    <input v-model="regerEmail" class="form-control bg-dark text-success" id="regEmail" placeholder="Введите email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regPassword" class="text-success">Пароль</label>
+                                    <input v-model="regerPassword" type="password" class="form-control bg-dark text-success" id="regPassword" placeholder="Введите пароль" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Зарегаться</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+let app = new Vue({
+    el: "#app",
+    data: {
+        loginEmail: "",
+        loginPassword: "",
+        regerEmail: "",
+        regerPassword: ""
+    },
+    methods: {
+        async createAccount() {
+            try {
+                const response = await fetch('/api/user/create', {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        "email": this.regerEmail,
+                        "password": this.regerPassword
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка создания аккаунта');
+                }
+
+                alert('Аккаунт успешно создан');
+            } catch (error) {
+                console.error(error);
+                alert('Ошибка: ' + error.message);
+            }
+        },
+        async login() {
+            try {
+                const response = await fetch('/api/user/login', {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        "email": this.loginEmail,
+                        "password": this.loginPassword
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorMessage = await response.text(); // Получаем текст ошибки, если есть
+                    throw new Error(errorMessage); // Создаем новую ошибку с текстом
+                }
+
+                // Редирект на главную страницу после успешного входа
+                window.location.href = '/'; // Предполагая, что главная страница доступна по пути "/"
+                
+            } catch (error) {
+                console.error(error);
+                alert('Ошибка: ' + error.message); // Показываем уведомление с текстом ошибки
+                this.loginEmail = ""
+                this.loginPassword = ""
+            }
+        }
+    }
+});
+</script>

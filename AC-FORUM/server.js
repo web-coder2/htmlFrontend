@@ -3,10 +3,12 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const session = require('express-session')
 
 // ИМПОРТ МОДЕЛЕЙ ДЛЯ БД И ПРОЧАЯ
 
 const game = require('./models/game.js')
+const user = require('./models/user.js')
 
 
 dotenv.config()
@@ -25,13 +27,24 @@ server.use(express.static(path.join(__dirname, 'public')))
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
+server.use(session({
+    secret : "qwertyuiop123A",
+    resave: false,
+    saveUninitialized: false
+}))
 
 
 // БАЗОВЫЙ РОУТИНГ РЕНДЕРА HTML ШАБЛОНОВ
 
 
 server.get('/', (req, res) => {
+
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
+
+})
+
+server.get('/login', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public', 'login.html'))
 })
 
 server.get('/create', (req, res) => {
@@ -139,6 +152,59 @@ server.post('/api/createGame', (req, res) => {
 
 })
 
+server.post('/api/user/create', async (req, res) => {
+    try {
+        let email = await req.body.email;
+        let password = await req.body.password;
+
+        console.log(email, password, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+
+        let newUser = new user({
+            email: email,
+            password: password // Не забудьте захешировать пароль перед сохранением в БД!
+        });
+
+        await newUser.save(); // Дождитесь завершения операции сохранения
+        res.status(200).send('Пользователь создан');
+
+        console.log(newUser);
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Ошибка сервера');
+    }
+});
+
+
+server.post('/api/user/login', async (req, res) => {
+    try { 
+        const email = req.body.email;
+        const password = req.body.password;
+
+        const userAssassin = await user.findOne({ 'email': email });
+
+        if (userAssassin) {
+            // Сравниваем пароль (прямое сравнение для примера)
+            if (password === userAssassin.password) {
+                req.session.email = userAssassin.email;
+                req.session.save(err => {
+                    if (err) {
+                        console.error("Ошибка сохранения сессии:", err);
+                        return res.status(500).json({ error: 'Ошибка сервера' });
+                    }
+
+                    res.status(200).send('Вход выполнен'); // Отправляем положительный ответ на клиент
+                });
+            } else {
+                res.status(401).send('Неправильный пароль'); // Неправильный пароль
+            }
+        } else {
+            res.status(404).send('Пользователь не найден'); // Пользователь не найден
+        }
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Ошибка сервера');
+    }
+});
 
 
 async function startServer() {
