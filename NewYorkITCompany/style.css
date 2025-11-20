@@ -28,7 +28,8 @@
     position: relative;
     width: 300px;
     height: 300px;
-    background-color: rgb(31, 43, 31);
+    margin-bottom: 50px;
+    margin-left: -5%;
   }
   
   /* Общий контейнер для сектора */
@@ -103,28 +104,28 @@
   }
   
   /* Расположение внешних секторов по кругу */
-  .outer .sector:nth-child(1)  { transform: rotate(0deg) translateY(-130px); }
-  .outer .sector:nth-child(2)  { transform: rotate(36deg) translateY(-130px); }
-  .outer .sector:nth-child(3)  { transform: rotate(72deg) translateY(-130px); }
-  .outer .sector:nth-child(4)  { transform: rotate(108deg) translateY(-130px); }
-  .outer .sector:nth-child(5)  { transform: rotate(144deg) translateY(-130px); }
-  .outer .sector:nth-child(6)  { transform: rotate(180deg) translateY(-130px); }
-  .outer .sector:nth-child(7)  { transform: rotate(216deg) translateY(-130px); }
-  .outer .sector:nth-child(8)  { transform: rotate(252deg) translateY(-130px); }
-  .outer .sector:nth-child(9)  { transform: rotate(288deg) translateY(-130px); }
-  .outer .sector:nth-child(10) { transform: rotate(324deg) translateY(-130px); }
+  .outer .sector:nth-child(1)  { transform: rotate(0deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(2)  { transform: rotate(36deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(3)  { transform: rotate(72deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(4)  { transform: rotate(108deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(5)  { transform: rotate(144deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(6)  { transform: rotate(180deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(7)  { transform: rotate(216deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(8)  { transform: rotate(252deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(9)  { transform: rotate(288deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+  .outer .sector:nth-child(10) { transform: rotate(324deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
   
   /* Аналогично для внутренних секторов с меньшим радиусом */
-  .inner .sector:nth-child(1)  { transform: rotate(0deg) translateY(-70px); }
-  .inner .sector:nth-child(2)  { transform: rotate(36deg) translateY(-70px); }
-  .inner .sector:nth-child(3)  { transform: rotate(72deg) translateY(-70px); }
-  .inner .sector:nth-child(4)  { transform: rotate(108deg) translateY(-70px); }
-  .inner .sector:nth-child(5)  { transform: rotate(144deg) translateY(-70px); }
-  .inner .sector:nth-child(6)  { transform: rotate(180deg) translateY(-70px); }
-  .inner .sector:nth-child(7)  { transform: rotate(216deg) translateY(-70px); }
-  .inner .sector:nth-child(8)  { transform: rotate(252deg) translateY(-70px); }
-  .inner .sector:nth-child(9)  { transform: rotate(288deg) translateY(-70px); }
-  .inner .sector:nth-child(10) { transform: rotate(324deg) translateY(-70px); }
+  .inner .sector:nth-child(1)  { transform: rotate(0deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(2)  { transform: rotate(36deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(3)  { transform: rotate(72deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(4)  { transform: rotate(108deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(5)  { transform: rotate(144deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(6)  { transform: rotate(180deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(7)  { transform: rotate(216deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(8)  { transform: rotate(252deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(9)  { transform: rotate(288deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
+  .inner .sector:nth-child(10) { transform: rotate(324deg) translateY(-70px); margin-left: 50%; margin-top: 50%; }
   
   /* Для футера: равное распределение элементов по горизонтали */
   .sale-section-footer {
