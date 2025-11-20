@@ -80,16 +80,17 @@
   
   /* Аналогично для внутренних секторов */
   .inner .sector {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 40px;
   }
 
   /* Общий стиль для секторов */
 .sector {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: #00ffcc;
+    /* background-color: aquamarine; */
     border-radius: 4px; /* чуть скруглим углы */
     display: flex;
     justify-content: center;
@@ -110,7 +111,9 @@
   .outer .sector:nth-child(4)  { transform: rotate(108deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
   .outer .sector:nth-child(5)  { transform: rotate(144deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
   .outer .sector:nth-child(6)  { transform: rotate(180deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
-  .outer .sector:nth-child(7)  { transform: rotate(216deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
+
+  .outer .sector:nth-child(7)  { transform: rotate(225deg) translateY(-120px); margin-left: 50%; margin-top: 50%; width: 60px; }
+
   .outer .sector:nth-child(8)  { transform: rotate(252deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
   .outer .sector:nth-child(9)  { transform: rotate(288deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
   .outer .sector:nth-child(10) { transform: rotate(324deg) translateY(-130px); margin-left: 50%; margin-top: 50%; }
