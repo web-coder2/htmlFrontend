@@ -1,0 +1,135 @@
+.sale-section {
+    background-color: #0f1923;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    font-family: 'Arial', sans-serif;
+    color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Заголовок */
+  .sale-section-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .sale-section-title-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ffcc;
+    letter-spacing: 1px;
+  }
+  
+  /* Контейнер циферблата */
+  .clock-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: rgb(31, 43, 31);
+  }
+  
+  /* Общий контейнер для сектора */
+  .sector-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Внутренний и внешний круг */
+  /* .inner, .outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  } */
+
+
+  /* Общий стиль для секторов */
+  .sector {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #00ffcc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #0f1923;
+    box-shadow: 0 0 4px rgba(0,255,204,0.8);
+    cursor: default;
+    /* Центрирование по окружности */
+    transform-origin: center;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  /* Расположение внешних секторов по кругу */
+  .outer .sector {
+    /* Каждый сектор повернется на свой угол и сместится радиусом */
+  }
+  
+  /* Аналогично для внутренних секторов */
+  .inner .sector {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Общий стиль для секторов */
+.sector {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #00ffcc;
+    border-radius: 4px; /* чуть скруглим углы */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #0f1923;
+    box-shadow: 0 0 4px rgba(0,255,204,0.8);
+    cursor: default;
+    transform-origin: center;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  /* Расположение внешних секторов по кругу */
+  .outer .sector:nth-child(1)  { transform: rotate(0deg) translateY(-130px); }
+  .outer .sector:nth-child(2)  { transform: rotate(36deg) translateY(-130px); }
+  .outer .sector:nth-child(3)  { transform: rotate(72deg) translateY(-130px); }
+  .outer .sector:nth-child(4)  { transform: rotate(108deg) translateY(-130px); }
+  .outer .sector:nth-child(5)  { transform: rotate(144deg) translateY(-130px); }
+  .outer .sector:nth-child(6)  { transform: rotate(180deg) translateY(-130px); }
+  .outer .sector:nth-child(7)  { transform: rotate(216deg) translateY(-130px); }
+  .outer .sector:nth-child(8)  { transform: rotate(252deg) translateY(-130px); }
+  .outer .sector:nth-child(9)  { transform: rotate(288deg) translateY(-130px); }
+  .outer .sector:nth-child(10) { transform: rotate(324deg) translateY(-130px); }
+  
+  /* Аналогично для внутренних секторов с меньшим радиусом */
+  .inner .sector:nth-child(1)  { transform: rotate(0deg) translateY(-70px); }
+  .inner .sector:nth-child(2)  { transform: rotate(36deg) translateY(-70px); }
+  .inner .sector:nth-child(3)  { transform: rotate(72deg) translateY(-70px); }
+  .inner .sector:nth-child(4)  { transform: rotate(108deg) translateY(-70px); }
+  .inner .sector:nth-child(5)  { transform: rotate(144deg) translateY(-70px); }
+  .inner .sector:nth-child(6)  { transform: rotate(180deg) translateY(-70px); }
+  .inner .sector:nth-child(7)  { transform: rotate(216deg) translateY(-70px); }
+  .inner .sector:nth-child(8)  { transform: rotate(252deg) translateY(-70px); }
+  .inner .sector:nth-child(9)  { transform: rotate(288deg) translateY(-70px); }
+  .inner .sector:nth-child(10) { transform: rotate(324deg) translateY(-70px); }
+  
+  /* Для футера: равное распределение элементов по горизонтали */
+  .sale-section-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+  }
