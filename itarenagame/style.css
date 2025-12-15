@@ -1,0 +1,44 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.event-container {
+    display: flex;
+}
+
+.event-cards {
+    width: 20%;
+    background-color: rgb(180, 174, 174);
+    text-align: center;
+}
+
+.event-field {
+    width: 60%;
+    background-color: rgb(221, 217, 217);
+    text-align: center;
+}
+
+.paei-container {
+    width: 20%;
+    background-color: rgb(208, 185, 185);
+    text-align: center;
+}
+
+.self-field {
+    width: 100%;
+    background-image: url('img/table/events_board.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 500px;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.self-paei {
+    width: 60%;
+    margin-left: 20%;
+    background-image: url('img/table/dice.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+}
