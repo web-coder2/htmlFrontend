@@ -31,7 +31,6 @@ body {
     background-size: contain;
     height: 500px;
     background-position: center;
-    margin-bottom: 20px;
 }
 
 .self-paei {
@@ -46,5 +45,10 @@ body {
 @media (max-width: 480px) {
     .event-container {
         display: block !important;
+    }
+
+    .event-field {
+        width: 100% Im !important;
+        background-color: rgb(61, 29, 29);
     }
 }
