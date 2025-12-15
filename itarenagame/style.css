@@ -42,3 +42,9 @@ body {
     background-size: contain;
     height: 200px;
 }
+
+@media (max-width: 480px) {
+    .event-container {
+        display: block !important;
+    }
+}
