@@ -1,75 +1,8 @@
-/**
- *------
- * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * ITArenaGame implementation : © <Your name here> <Your email address here>
- *
- * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
- * See http://en.boardgamearena.com/#!doc/Studio for more information.
- * -----
- *
- * itarenagame.css
- *
- * ITArenaGame stylesheet
- *
- */
-
-/*
-    This is the CSS stylesheet of your game User Interface.
-    
-    Styles defined on this file will be applied to the HTML elements you define in your
-    HTML template (itarenagame_itarenagame.tpl), and to HTML elements you create dynamically
-    (in itarenagame.js).
-    
-    Usually, you are using CSS to:
-    
-    1°) define the overall layout of your game
-        (ex: place the board on the top left, place player's hand beside, place the deck on the right, ...).
-
-    2°) create your CSS-sprites:
-        All images of your games should be gathered into a small number of image files. Then, using
-        background-image and background-position CSS properties, you create HTML blocks that can 
-        display these images correctly (see example below).
-    
-    3°) ... anything else:
-        It is really easy to add and remove CSS classes dynamically from your Javascript with
-        dojo.addClass and dojo.removeClass. It is also easy to check if an element has a class
-        (dojo.hasClass) or to get all elements with a specific class (dojo.query). This is why,
-        very often, using CSS classes for the logic of your user interface allow you to do complex
-        thing easily.
-        
-        
-     Note: on the production platform, this file will be compressed and comments will be removed.
-           Consequently, don't hesitate to put as many comments as necessary.
-*/
-
-/* Note: you must not use any @import directive */
-
-/********* You can start writing your CSS below this line: **********/
-
-/* Общее правило для box-sizing: border-box */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
-/*
-    Example of CSS sprites (a black token and a white token, 20x20px each, embedded in the same "tokens.png" 40x20px image):
-
-    .white_token {
-        background-image: url('img/tokens.png');
-        background-position: 0px 0px;
-    }
-    .black_token {
-        background-image: url('img/tokens.png');
-        background-position: -20px 0px;
-    }
-    .token {
-        width: 20px;
-        height: 20px;
-        background-repeat: none;
-    }
-*/
 
 .game-layout {
   display: flex;
@@ -1496,7 +1429,7 @@
   /* left: 500px;
   top: 390px; */
   left: 50%;
-  top: 280px;
+  top: 330px;
   width: calc(25% - 125px);
   flex: 0 0 calc(25% - 125px);
   height: calc(77%);
@@ -1516,6 +1449,31 @@
   flex: 0 0 calc(42% + 50px);
   max-width: calc(42% + 50px);
   max-height: calc(42% + 50px);
+}
+
+@media (max-width: 480px) {
+
+    .project-board-panel__column--long-term {
+        width: 50px;
+        left: 55%;
+        top: -20px;
+    }
+
+    .project-board-panel__column--expensive {
+        width: 50px;
+        top: 130px;
+        left: 58%;
+    }
+
+    .project-board-panel__column--complex {
+        width: 50px;
+        left: 23%
+    }
+
+    .project-board-panel__column-header {
+        font-size: 5px !important;
+    }
+
 }
 
 .project-board-panel__column:not(:last-child)::after {
@@ -2033,6 +1991,7 @@
 .badgers-panel__label {
   font-weight: 600;
   font-size: 14px;
+  margin-top: 100%;
 }
 
 .badgers-panel__counts {
@@ -2654,6 +2613,18 @@
 
 .founder-selection-card__select-button:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 480px) {
+    .events-and-skills {
+        display: block;
+    }
+    .event-card-panel {
+        text-align: center;
+    }
+    .round-panel {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1200px) {
