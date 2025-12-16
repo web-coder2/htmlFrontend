@@ -2,257 +2,503 @@
 <html>
     <head>
         <title>itarenagame</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-
-
         <div class="game-layout">
             <div class="main-column">
-              <div class="banner-container">
-                <div id="round-banner" class="round-banner">
-                  <div class="round-banner__content"></div>
-                </div>
-                <div id="game-mode-banner" class="game-mode-banner"></div>
-              </div>
-              <div class="events-and-skills">
-                <!-- Планшет навыков и событий -->
-                <div id="event-card-panel" class="event-card-panel">
-                  <div class="event-card-panel__header">Карта события</div>
-                  <div class="event-card-panel__body"></div>
-                </div>
-                <div class="round-panel">
-                  <div class="round-panel__header">Планшет событий</div>
-                  <div class="round-panel__wrapper">
-                    <img src="img/table/events_board.png" alt="Events board" class="round-panel__image" />
-                    <!-- Рамка с раундами -->
-                    <div class="round-panel__rounds-track">
-                      <div class="round-track-column" data-round="1"><div class="round-track-column__circle"></div></div>
-                      <div class="round-track-column" data-round="2"><div class="round-track-column__circle"></div></div>
-                      <div class="round-track-column" data-round="3"><div class="round-track-column__circle"></div></div>
-                      <div class="round-track-column" data-round="4"><div class="round-track-column__circle"></div></div>
-                      <div class="round-track-column" data-round="5"><div class="round-track-column__circle"></div></div>
-                      <div class="round-track-column" data-round="6"><div class="round-track-column__circle"></div></div>
+                <div class="banner-container">
+                    <div id="round-banner" class="round-banner">
+                        <div class="round-banner__content"></div>
                     </div>
-                    <!-- Навыки -->
-                    <div class="round-panel__skills-track">
-                      <div class="round-panel__skills-track-row round-panel__skills-track-row--tokens">
-                        <div class="round-panel__skills-track-row-inner">
-                          <div class="round-panel__skill-token-column"></div>
-                          <div class="round-panel__skill-token-column"></div>
-                          <div class="round-panel__skill-token-column round-panel__skill-token-column--large"></div>
-                          <div class="round-panel__skill-token-column"></div>
-                          <div class="round-panel__skill-token-column"></div>
-                        </div>
-                      </div>
-                      <div class="round-panel__skills-track-row round-panel__skills-track-row--skills">
-                        <div class="round-panel__skills-track-row-inner">
-                          <div class="round-panel__skill-column" data-skill="eloquence"></div>
-                          <div class="round-panel__skill-column" data-skill="discipline"></div>
-                          <div class="round-panel__skill-column" data-skill="intellect"></div>
-                          <div class="round-panel__skill-column" data-skill="frugality"></div>
-                        </div>
-                      </div>
-                      <div class="round-panel__skill-indicators"></div>
+                    <div id="game-mode-banner" class="game-mode-banner"></div>
+                </div>
+                <div class="events-and-skills">
+                    <!-- Планшет навыков и событий -->
+                    <div id="event-card-panel" class="event-card-panel">
+                        <div class="event-card-panel__header">Карта события</div>
+                        <div class="event-card-panel__body"></div>
                     </div>
-                    <!-- Цели -->
-                    <div class="round-panel__goals-track">
-                      <div class="round-panel__goals-track-row">
-                        <div class="round-panel__goals-track-row-inner">
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                        </div>
-                      </div>
-                      <div class="round-panel__goals-track-row">
-                        <div class="round-panel__goals-track-row-inner">
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                          <div class="round-panel__goal-column"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="dice-panel">
-                  <div class="dice-panel__header">Кость PAEI</div>
-                  <div class="dice-panel__body">
-                    <img src="img/table/dice.png" alt="Dice" class="dice-panel__image" />
-                    <div id="cube-face-display" class="dice-panel__value"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="money-and-project">
-                <!-- Деньги игрока -->
-                <div class="player-money-panel">
-                  <div class="player-money-panel__header">Деньги игрока</div>
-                  <div class="player-money-panel__color-badge"></div>
-                  <div class="player-money-panel__body">
-                    <div class="badgers-panel__coin" data-value="42">
-                        <img src="img/money/5.png" alt="Coin Name" class="badgers-panel__image" />
-                        <div class="badgers-panel__info">
-                          <div class="badgers-panel__label">B</div>
-                          <div class="badgers-panel__counts">5</div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <!-- Планшет проектов -->
-                <div class="project-board-panel">
-                  <div class="project-board-panel__header">Планшет проектов</div>
-                  <div class="project-board-panel__body">
-                    <img src="img/table/project_table.png" alt="Планшет проектов" class="project-board-panel__image" />
-                    <div class="project-board-panel__columns">
-                      <!-- Красные -->
-                      <div class="project-board-panel__column project-board-panel__column--complex project-board-panel__column--red">
-                        <div class="project-board-panel__column-header">Сложные - Красный</div>
-                        <div class="project-board-panel__column-body">
-                          <div class="project-board-panel__row" data-label="red-circle-1"></div>
-                          <div class="project-board-panel__row" data-label="red-hex"></div>
-                          <div class="project-board-panel__row" data-label="red-square"></div>
-                          <div class="project-board-panel__row" data-label="red-circle-2"></div>
-                        </div>
-                      </div>
-                      <!-- Синие -->
-                      <div class="project-board-panel__column project-board-panel__column--long-term project-board-panel__column--blue">
-                        <div class="project-board-panel__column-header">Длительные - Синий</div>
-                        <div class="project-board-panel__column-body">
-                          <div class="project-board-panel__row" data-label="blue-circle-1"></div>
-                          <div class="project-board-panel__row" data-label="blue-square"></div>
-                          <div class="project-board-panel__row" data-label="blue-hex"></div>
-                          <div class="project-board-panel__row" data-label="blue-circle-2"></div>
-                        </div>
-                      </div>
-                      <!-- Зеленые -->
-                      <div class="project-board-panel__column project-board-panel__column--expensive project-board-panel__column--green">
-                        <div class="project-board-panel__column-header">Дорогие - Зеленый</div>
-                        <div class="project-board-panel__column-body">
-                          <div class="project-board-panel__row" data-label="green-circle-1"></div>
-                          <div class="project-board-panel__row" data-label="green-hex"></div>
-                          <div class="project-board-panel__row" data-label="green-square"></div>
-                          <div class="project-board-panel__row" data-label="green-circle-2"></div>
-                        </div>
-                      </div>
-                      <!-- Пул проектов -->
-                      <div class="project-board-panel__column project-board-panel__column--task-pool">
-                        <div class="project-board-panel__column-header">Пулл проектов</div>
-                        <div class="project-board-panel__task-pool-body">
-                          <div class="project-board-panel__task-pool-row project-board-panel__task-pool-row--top">
-                            <div class="project-board-panel__task-pool-cell" name="круг"></div>
-                          </div>
-                          <div class="project-board-panel__task-pool-row project-board-panel__task-pool-row--bottom">
-                            <div class="project-board-panel__task-pool-cell" name="квадрат"></div>
-                            <div class="project-board-panel__task-pool-cell" name="гекс"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> <!-- Конец колонок -->
-                  </div>
-                </div>
-                <!-- Банк -->
-                <div class="bank">
-                  <div class="badgers-panel">
-                    <div class="badgers-panel__header">Баджерсы</div>
-                    <div class="badgers-panel__body">
-
-                        <div class="badgers-panel__coin" data-value="42">
-                            <img src="img/money/1.png" alt="Coin Name" class="badgers-panel__image" />
-                            <div class="badgers-panel__info">
-                              <div class="badgers-panel__label">B</div>
-                              <div class="badgers-panel__counts">1</div>
+                    <div class="round-panel">
+                        <div class="round-panel__header">Планшет событий</div>
+                        <div class="round-panel__wrapper">
+                            <img src="img/table/events_board.png" alt="Events board" class="round-panel__image" />
+                            <!-- Рамка с раундами -->
+                            <div class="round-panel__rounds-track">
+                                <div class="round-track-column" data-round="1"><div class="round-track-column__circle"></div></div>
+                                <div class="round-track-column" data-round="2"><div class="round-track-column__circle"></div></div>
+                                <div class="round-track-column" data-round="3"><div class="round-track-column__circle"></div></div>
+                                <div class="round-track-column" data-round="4"><div class="round-track-column__circle"></div></div>
+                                <div class="round-track-column" data-round="5"><div class="round-track-column__circle"></div></div>
+                                <div class="round-track-column" data-round="6"><div class="round-track-column__circle"></div></div>
                             </div>
-                          </div>
-
-                        <div class="badgers-panel__coin" data-value="42">
-                            <img src="img/money/2.png" alt="Coin Name" class="badgers-panel__image" />
-                            <div class="badgers-panel__info">
-                            <div class="badgers-panel__label">B</div>
-                            <div class="badgers-panel__counts">2</div>
+                            <!-- Навыки -->
+                            <div class="round-panel__skills-track">
+                                <div class="round-panel__skills-track-row round-panel__skills-track-row--tokens">
+                                    <div class="round-panel__skills-track-row-inner">
+                                        <div class="round-panel__skill-token-column"></div>
+                                        <div class="round-panel__skill-token-column"></div>
+                                        <div class="round-panel__skill-token-column round-panel__skill-token-column--large"></div>
+                                        <div class="round-panel__skill-token-column"></div>
+                                        <div class="round-panel__skill-token-column"></div>
+                                    </div>
+                                </div>
+                                <div class="round-panel__skills-track-row round-panel__skills-track-row--skills">
+                                    <div class="round-panel__skills-track-row-inner">
+                                        <div class="round-panel__skill-column" data-skill="eloquence"></div>
+                                        <div class="round-panel__skill-column" data-skill="discipline"></div>
+                                        <div class="round-panel__skill-column" data-skill="intellect"></div>
+                                        <div class="round-panel__skill-column" data-skill="frugality"></div>
+                                    </div>
+                                </div>
+                                <div class="round-panel__skill-indicators"></div>
+                            </div>
+                            <!-- Цели -->
+                            <div class="round-panel__goals-track">
+                                <div class="round-panel__goals-track-row">
+                                    <div class="round-panel__goals-track-row-inner">
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                    </div>
+                                </div>
+                                <div class="round-panel__goals-track-row">
+                                    <div class="round-panel__goals-track-row-inner">
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                        <div class="round-panel__goal-column"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="dice-panel">
+                        <div class="dice-panel__header">Кость PAEI</div>
+                        <div class="dice-panel__body">
+                            <img src="img/table/dice.png" alt="Dice" class="dice-panel__image" />
+                            <div id="cube-face-display" class="dice-panel__value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="money-and-project">
+                    <!-- Деньги игрока -->
+                    <div class="player-money-panel">
+                        <div class="player-money-panel__header">Деньги игрока</div>
+                        <div class="player-money-panel__color-badge"></div>
+                        <div class="player-money-panel__body">
+                            <div class="badgers-panel__coin" data-value="42">
+                                <img src="img/money/5.png" alt="Coin Name" class="badgers-panel__image" />
+                                <div class="badgers-panel__info">
+                                    <div class="badgers-panel__label">B</div>
+                                    <div class="badgers-panel__counts">5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Планшет проектов -->
+                    <div class="project-board-panel">
+                        <div class="project-board-panel__header">Планшет проектов</div>
+                        <div class="project-board-panel__body">
+                            <img src="img/table/project_table.png" alt="Планшет проектов" class="project-board-panel__image" />
+                            <div class="project-board-panel__columns">
+                                <!-- Красные -->
+                                <div class="project-board-panel__column project-board-panel__column--complex project-board-panel__column--red">
+                                    <div class="project-board-panel__column-header">Сложные - Красный</div>
+                                    <div class="project-board-panel__column-body">
+                                        <div class="project-board-panel__row" data-label="red-circle-1"></div>
+                                        <div class="project-board-panel__row" data-label="red-hex"></div>
+                                        <div class="project-board-panel__row" data-label="red-square"></div>
+                                        <div class="project-board-panel__row" data-label="red-circle-2"></div>
+                                    </div>
+                                </div>
+                                <!-- Синие -->
+                                <div class="project-board-panel__column project-board-panel__column--long-term project-board-panel__column--blue">
+                                    <div class="project-board-panel__column-header">Длительные - Синий</div>
+                                    <div class="project-board-panel__column-body">
+                                        <div class="project-board-panel__row" data-label="blue-circle-1"></div>
+                                        <div class="project-board-panel__row" data-label="blue-square"></div>
+                                        <div class="project-board-panel__row" data-label="blue-hex"></div>
+                                        <div class="project-board-panel__row" data-label="blue-circle-2"></div>
+                                    </div>
+                                </div>
+                                <!-- Зеленые -->
+                                <div class="project-board-panel__column project-board-panel__column--expensive project-board-panel__column--green">
+                                    <div class="project-board-panel__column-header">Дорогие - Зеленый</div>
+                                    <div class="project-board-panel__column-body">
+                                        <div class="project-board-panel__row" data-label="green-circle-1"></div>
+                                        <div class="project-board-panel__row" data-label="green-hex"></div>
+                                        <div class="project-board-panel__row" data-label="green-square"></div>
+                                        <div class="project-board-panel__row" data-label="green-circle-2"></div>
+                                    </div>
+                                </div>
+                                <!-- Пул проектов -->
+                                <div class="project-board-panel__column project-board-panel__column--task-pool">
+                                    <div class="project-board-panel__column-header">Пулл проектов</div>
+                                    <div class="project-board-panel__task-pool-body">
+                                        <div class="project-board-panel__task-pool-row project-board-panel__task-pool-row--top">
+                                            <div class="project-board-panel__task-pool-cell" name="круг"></div>
+                                        </div>
+                                        <div class="project-board-panel__task-pool-row project-board-panel__task-pool-row--bottom">
+                                            <div class="project-board-panel__task-pool-cell" name="квадрат"></div>
+                                            <div class="project-board-panel__task-pool-cell" name="гекс"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Конец колонок -->
+                        </div>
+                    </div>
+                    <!-- Банк -->
+                    <div class="bank">
+                        <div class="badgers-panel">
+                            <div class="badgers-panel__header">Баджерсы</div>
+                            <div class="badgers-panel__body">
+                                <div class="badgers-panel__coin" data-value="42">
+                                    <img src="img/money/1.png" alt="Coin Name" class="badgers-panel__image" />
+                                    <div class="badgers-panel__info">
+                                        <div class="badgers-panel__label">B</div>
+                                        <div class="badgers-panel__counts">1</div>
+                                    </div>
+                                </div>
 
-                        <div class="badgers-panel__coin" data-value="42">
-                            <img src="img/money/3.png" alt="Coin Name" class="badgers-panel__image" />
-                            <div class="badgers-panel__info">
-                            <div class="badgers-panel__label">B</div>
-                            <div class="badgers-panel__counts">3</div>
+                                <div class="badgers-panel__coin" data-value="42">
+                                    <img src="img/money/2.png" alt="Coin Name" class="badgers-panel__image" />
+                                    <div class="badgers-panel__info">
+                                        <div class="badgers-panel__label">B</div>
+                                        <div class="badgers-panel__counts">2</div>
+                                    </div>
+                                </div>
+
+                                <div class="badgers-panel__coin" data-value="42">
+                                    <img src="img/money/3.png" alt="Coin Name" class="badgers-panel__image" />
+                                    <div class="badgers-panel__info">
+                                        <div class="badgers-panel__label">B</div>
+                                        <div class="badgers-panel__counts">3</div>
+                                    </div>
+                                </div>
+
+                                <div class="badgers-panel__coin" data-value="42">
+                                    <img src="img/money/5.png" alt="Coin Name" class="badgers-panel__image" />
+                                    <div class="badgers-panel__info">
+                                        <div class="badgers-panel__label">B</div>
+                                        <div class="badgers-panel__counts">5</div>
+                                    </div>
+                                </div>
+
+                                <div class="badgers-panel__coin" data-value="42">
+                                    <img src="img/money/10.png" alt="Coin Name" class="badgers-panel__image" />
+                                    <div class="badgers-panel__info">
+                                        <div class="badgers-panel__label">B</div>
+                                        <div class="badgers-panel__counts">10</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Планшет игрока и его проектов -->
+                <div class="players-table">
+                    <div class="players-table__body">
+                        <!-- IT проекты -->
+                        <div class="it-projects">
+                            <div class="it-projects__header">IT проекты</div>
+                            <div class="it-projects__columns">
+                                <!-- Выполненные -->
+                                <div class="completed-projects">
+                                    <div class="completed-projects__header">Выполненные проекты</div>
+                                    <div class="completed-projects__body"></div>
+                                </div>
+                                <!-- Части проектов -->
+                                <div class="parts-of-projects">
+                                    <div class="parts-of-projects__header">Части проектов</div>
+                                    <div class="parts-of-projects__body"></div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="badgers-panel__coin" data-value="42">
-                            <img src="img/money/5.png" alt="Coin Name" class="badgers-panel__image" />
-                            <div class="badgers-panel__info">
-                            <div class="badgers-panel__label">B</div>
-                            <div class="badgers-panel__counts">5</div>
+                        <!-- Планшет игрока -->
+
+                        <div class="player-personal-board">
+                            <div class="player-personal-board__header">Планшет игрока</div>
+                            <div class="player-personal-board__body">
+                                <img src="img/table/player-table-green.png" alt="Планшет игрока" class="player-personal-board__image" data-default-src="https://yourgameurl.com/img/table/player-table-green.png" />
+                                <div class="player-board-blocks">
+                                    <div class="player-board-block player-board-block--left player-actions-block">
+                                        <div class="player-board-block--left-row">
+                                            <div class="player-board-block--left-cell"></div>
+                                            <div class="player-board-block--left-cell player-penalty-block">
+                                                <div class="player-penalty-tokens__container">
+                                                    <div class="player-penalty-tokens__column start-position-1"></div>
+                                                    <div class="player-penalty-tokens__column start-position-2"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-empty"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-1"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-2"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-3"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-4"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-5"></div>
+                                                    <div class="player-penalty-tokens__column penalty-position-10"></div>
+                                                </div>
+                                            </div>
+                                            <div class="player-board-block--left-cell player-exchange-block">
+                                                <div class="player-exchange-block__column player-exchange-block__column--bonus"></div>
+                                                <div class="player-exchange-block__column player-exchange-block__column--exchange-scheme">
+                                                    <div class="player-exchange-block__block player-exchange-block__block--improvement">
+                                                        <div class="player-exchange-block__improvement-cell player-exchange-block__improvement-cell--off">
+                                                            <div class="player-exchange-token"></div>
+                                                        </div>
+                                                        <div class="player-exchange-block__improvement-cell player-exchange-block__improvement-cell--on"></div>
+                                                    </div>
+                                                    <div class="player-exchange-block__block player-exchange-block__block--choice">
+                                                        <div class="player-exchange-block__choice-column shema-update-off">
+                                                            <div class="player-exchange-block__choice-row" data-row="1"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="2"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="3"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="4"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="5"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="6"></div>
+                                                        </div>
+                                                        <div class="player-exchange-block__choice-column shema-update-on">
+                                                            <div class="player-exchange-block__choice-row" data-row="1"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="2"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="3"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="4"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="5"></div>
+                                                            <div class="player-exchange-block__choice-row" data-row="6"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="player-board-block--left-cell player-sprint-panel">
+                                                <div id="sprint-column-tasks" class="player-sprint-panel__column player-sprint-panel__column--first sprint-column-tasks">
+                                                    <div class="player-sprint-panel__rows-container">
+                                                        <div id="sprint-row-6" class="player-sprint-panel__row" data-row-index="6">6</div>
+                                                        <div id="sprint-row-5" class="player-sprint-panel__row" data-row-index="5">5</div>
+                                                        <div id="sprint-row-4" class="player-sprint-panel__row" data-row-index="4">4</div>
+                                                        <div id="sprint-row-3" class="player-sprint-panel__row" data-row-index="3">3</div>
+                                                        <div id="sprint-row-2" class="player-sprint-panel__row" data-row-index="2">2</div>
+                                                        <div id="sprint-row-1" class="player-sprint-panel__row" data-row-index="1">
+                                                            1
+                                                            <div class="player-sprint-panel__token"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="sprint-column-backlog" class="player-sprint-panel__column sprint-column-backlog"></div>
+                                                <div id="sprint-column-in-progress" class="player-sprint-panel__column sprint-column-in-progress"></div>
+                                                <div id="sprint-column-testing" class="player-sprint-panel__column sprint-column-testing"></div>
+                                                <div id="sprint-column-completed" class="player-sprint-panel__column sprint-column-completed"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player-board-block player-board-block--right player-departments-block">
+                                        <div id="player-department-sales" class="player-board-block--right-row player-department-sales">
+                                            <div id="player-department-sales-top" class="player-department-sales__block player-department-sales-top"></div>
+                                            <div id="player-department-sales-middle" class="player-department-sales__block player-department-sales-middle">
+                                                <div class="income-track-panel">
+                                                    <div class="income-track-panel__body">
+                                                        <div class="income-track">
+                                                            <!-- Внешняя окружность (11-20) -->
+                                                            <div class="income-track__circle income-track__circle--outer">
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="11" title="Сектор 11" aria-label="Сектор 11" style="transform: rotate(-90deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(90deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="12" title="Сектор 12" aria-label="Сектор 12" style="transform: rotate(0deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(0deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="13" title="Сектор 13" aria-label="Сектор 13" style="transform: rotate(36deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-36deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="14" title="Сектор 14" aria-label="Сектор 14" style="transform: rotate(72deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-72deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="15" title="Сектор 15" aria-label="Сектор 15" style="transform: rotate(108deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-108deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="16" title="Сектор 16" aria-label="Сектор 16" style="transform: rotate(144deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-144deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="17" title="Сектор 17" aria-label="Сектор 17" style="transform: rotate(180deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-180deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="18" title="Сектор 18" aria-label="Сектор 18" style="transform: rotate(216deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-216deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="19" title="Сектор 19" aria-label="Сектор 19" style="transform: rotate(252deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-252deg)"></div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--outer" data-value="20" title="Сектор 20" aria-label="Сектор 20" style="transform: rotate(288deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-288deg)"></div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Внутренняя окружность (1-10) -->
+                                                            <div class="income-track__circle income-track__circle--inner">
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="1" title="Сектор 1" aria-label="Сектор 1" style="transform: rotate(-90deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(90deg)">
+                                                                        1
+                                                                        <div class="income-track__token"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="2" title="Сектор 2" aria-label="Сектор 2" style="transform: rotate(0deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(0deg)">2</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="3" title="Сектор 3" aria-label="Сектор 3" style="transform: rotate(36deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-36deg)">3</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="4" title="Сектор 4" aria-label="Сектор 4" style="transform: rotate(72deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-72deg)">4</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="5" title="Сектор 5" aria-label="Сектор 5" style="transform: rotate(108deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-108deg)">5</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="6" title="Сектор 6" aria-label="Сектор 6" style="transform: rotate(144deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-144deg)">6</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="7" title="Сектор 7" aria-label="Сектор 7" style="transform: rotate(180deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-180deg)">7</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="8" title="Сектор 8" aria-label="Сектор 8" style="transform: rotate(216deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-216deg)">8</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="9" title="Сектор 9" aria-label="Сектор 9" style="transform: rotate(252deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-252deg)">9</div>
+                                                                </div>
+                                                                <div class="income-track__sector income-track__sector--inner" data-value="10" title="Сектор 10" aria-label="Сектор 10" style="transform: rotate(288deg)">
+                                                                    <div class="income-track__sector-content" style="transform: rotate(-288deg)">
+                                                                        10
+                                                                        <div class="income-track__token"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="income-track__center"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="player-department-sales-bottom" class="player-department-sales__block player-department-sales-bottom">
+                                                <div id="player-department-sales-off" class="player-department-sales-bottom__half">
+                                                    <div class="player-department-sales__token"></div>
+                                                </div>
+                                                <div id="player-department-sales-on" class="player-department-sales-bottom__half"></div>
+                                            </div>
+                                        </div>
+                                        <div id="player-department-back-office" class="player-board-block--right-row player-department-back-office">
+                                            <div id="player-department-back-office-top" class="player-department-back-office__row"></div>
+                                            <div id="player-department-back-office-evolution" class="player-department-back-office__row">
+                                                <div class="player-department-back-office-evolution__columns-wrapper">
+                                                    <!-- Колонки 1-3 -->
+                                                    <div class="player-department-back-office-evolution__column" id="player-department-back-office-evolution-column-1">
+                                                        <div class="player-department-back-office-evolution-column-1__rows-wrapper">
+                                                            <div id="player-department-back-office-evolution-column-1-row-6" class="player-department-back-office-evolution__row" data-row-index="6"></div>
+                                                            <div id="player-department-back-office-evolution-column-1-row-5" class="player-department-back-office-evolution__row" data-row-index="5"></div>
+                                                            <div id="player-department-back-office-evolution-column-1-row-4" class="player-department-back-office-evolution__row" data-row-index="4"></div>
+                                                            <div id="player-department-back-office-evolution-column-1-row-3" class="player-department-back-office-evolution__row" data-row-index="3"></div>
+                                                            <div id="player-department-back-office-evolution-column-1-row-2" class="player-department-back-office-evolution__row" data-row-index="2"></div>
+                                                            <div id="player-department-back-office-evolution-column-1-row-1" class="player-department-back-office-evolution__row" data-row-index="1"><div class="player-department-back-office-evolution__token"></div></div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Колонки 2 и 3 - пустые -->
+                                                    <div class="player-department-back-office-evolution__column" id="player-department-back-office-evolution-column-2"></div>
+                                                    <div class="player-department-back-office-evolution__column" id="player-department-back-office-evolution-column-3"></div>
+                                                </div>
+                                            </div>
+                                            <div id="player-department-back-office-update" class="player-department-back-office__row">
+                                                <div id="player-department-back-office-off" class="player-department-back-office-update__half player-department-back-office-off">
+                                                    <div class="player-department-back-office__token"></div>
+                                                </div>
+                                                <div id="player-department-back-office-on" class="player-department-back-office-update__half player-department-back-office-on"></div>
+                                            </div>
+                                        </div>
+                                        <div id="player-department-technical" class="player-board-block--right-row player-department-technical">
+                                            <div id="player-department-technical-name" class="player-department-technical__row"></div>
+                                            <div id="player-department-technical-development" class="player-department-technical__row">
+                                                <div class="player-department-technical-development__columns-wrapper">
+                                                    <!-- Колонки 1-4 -->
+                                                    <div class="player-department-technical-development__column player-department-technical-development__column--pink" id="player-department-technical-development-column-1">
+                                                        <div class="player-department-technical-development__rows-wrapper" style="height: 70%">
+                                                            <div id="player-department-technical-development-column-1-row-1" class="player-department-technical-development__row" data-row-index="1"></div>
+                                                            <div id="player-department-technical-development-column-1-row-2" class="player-department-technical-development__row" data-row-index="2"></div>
+                                                            <div id="player-department-technical-development-column-1-row-3" class="player-department-technical-development__row" data-row-index="3"></div>
+                                                            <div id="player-department-technical-development-column-1-row-4" class="player-department-technical-development__row" data-row-index="4"></div>
+                                                            <div id="player-department-technical-development-column-1-row-5" class="player-department-technical-development__row" data-row-index="5"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="player-department-technical-development__column player-department-technical-development__column--orange" id="player-department-technical-development-column-2">
+                                                        <div class="player-department-technical-development__rows-wrapper" style="height: 80%">
+                                                            <div id="player-department-technical-development-column-2-row-0" class="player-department-technical-development__row" data-row-index="0"></div>
+                                                            <div id="player-department-technical-development-column-2-row-1" class="player-department-technical-development__row" data-row-index="1"></div>
+                                                            <div id="player-department-technical-development-column-2-row-2" class="player-department-technical-development__row" data-row-index="2"></div>
+                                                            <div id="player-department-technical-development-column-2-row-3" class="player-department-technical-development__row" data-row-index="3"></div>
+                                                            <div id="player-department-technical-development-column-2-row-4" class="player-department-technical-development__row" data-row-index="4"></div>
+                                                            <div id="player-department-technical-development-column-2-row-5" class="player-department-technical-development__row" data-row-index="5"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="player-department-technical-development__column player-department-technical-development__column--blue" id="player-department-technical-development-column-3">
+                                                        <div class="player-department-technical-development__rows-wrapper" style="height: 70%">
+                                                            <div id="player-department-technical-development-column-3-row-1" class="player-department-technical-development__row" data-row-index="1"></div>
+                                                            <div id="player-department-technical-development-column-3-row-2" class="player-department-technical-development__row" data-row-index="2"></div>
+                                                            <div id="player-department-technical-development-column-3-row-3" class="player-department-technical-development__row" data-row-index="3"></div>
+                                                            <div id="player-department-technical-development-column-3-row-4" class="player-department-technical-development__row" data-row-index="4"></div>
+                                                            <div id="player-department-technical-development-column-3-row-5" class="player-department-technical-development__row" data-row-index="5"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="player-department-technical-development__column player-department-technical-development__column--purple" id="player-department-technical-development-column-4">
+                                                        <div class="player-department-technical-development__rows-wrapper" style="height: 100%">
+                                                            <div id="player-department-technical-development-column-4-row-1" class="player-department-technical-development__row" data-row-index="1"></div>
+                                                            <div id="player-department-technical-development-column-4-row-2" class="player-department-technical-development__row" data-row-index="2"></div>
+                                                            <div id="player-department-technical-development-column-4-row-3" class="player-department-technical-development__row" data-row-index="3"></div>
+                                                            <div id="player-department-technical-development-column-4-row-4" class="player-department-technical-development__row" data-row-index="4"></div>
+                                                            <div id="player-department-technical-development-column-4-row-5" class="player-department-technical-development__row" data-row-index="5"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="player-department-technical-upgrade" class="player-department-technical__row">
+                                                <div id="player-department-technical-off" class="player-department-technical-upgrade__half player-department-technical-off">
+                                                    <div class="player-department-technical__token"></div>
+                                                </div>
+                                                <div id="player-department-technical-on" class="player-department-technical-upgrade__half player-department-technical-on"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hiring-employees">
+                                    <div class="hiring-employees__header">Найм сотрудников</div>
+                                    <div class="hiring-employees__body">
+                                        <div class="sales-department">
+                                            <div class="sales-department__body" data-department="sales-department"></div>
+                                        </div>
+                                        <div class="back-office">
+                                            <div class="back-office__body" data-department="back-office"></div>
+                                        </div>
+                                        <div class="technical-department">
+                                            <div class="technical-department__body" data-department="technical-department"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="badgers-panel__coin" data-value="42">
-                            <img src="img/money/10.png" alt="Coin Name" class="badgers-panel__image" />
-                            <div class="badgers-panel__info">
-                            <div class="badgers-panel__label">B</div>
-                            <div class="badgers-panel__counts">10</div>
-                            </div>
+                    </div>
+                </div>
+                <!-- Рука игрока -->
+                <div class="active-player-hand" id="active-player-hand" hidden>
+                    <div class="active-player-hand__header">Руки игрока</div>
+                    <div class="active-player-hand__body">
+                        <div class="active-player-hand__side active-player-hand__side--left">
+                            <img src="img/table/hand-right.png" alt="Рука игрока" class="active-player-hand__image active-player-hand__image--left" />
                         </div>
-
+                        <div class="active-player-hand__center" id="active-player-hand-cards"></div>
+                        <div class="active-player-hand__side active-player-hand__side--right">
+                            <img src="img/table/hand-right.png" alt="Рука игрока" class="active-player-hand__image" />
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- Планшет игрока и его проектов -->
-              <div class="players-table">
-                <div class="players-table__body">
-                  <!-- IT проекты -->
-                  <div class="it-projects">
-                    <div class="it-projects__header">IT проекты</div>
-                    <div class="it-projects__columns">
-                      <!-- Выполненные -->
-                      <div class="completed-projects">
-                        <div class="completed-projects__header">Выполненные проекты</div>
-                        <div class="completed-projects__body"></div>
-                      </div>
-                      <!-- Части проектов -->
-                      <div class="parts-of-projects">
-                        <div class="parts-of-projects__header">Части проектов</div>
-                        <div class="parts-of-projects__body"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Планшет игрока -->
-                  <div class="player-personal-board">
-                    <div class="player-personal-board__header">Планшет игрока</div>
-                    <div class="player-personal-board__body">
-                      <img src="img/table/player-table-green.png" alt="Планшет игрока" class="player-personal-board__image" />
-                      <div class="player-board-blocks">
-                        <!-- Блоки и ячейки по вашему дизайну -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Рука игрока -->
-              <div class="active-player-hand" id="active-player-hand" hidden>
-                <div class="active-player-hand__header">Руки игрока</div>
-                <div class="active-player-hand__body">
-                  <div class="active-player-hand__side active-player-hand__side--left">
-                    <img src="img/table/hand-right.png" alt="Рука игрока" class="active-player-hand__image active-player-hand__image--left" />
-                  </div>
-                  <div class="active-player-hand__center" id="active-player-hand-cards"></div>
-                  <div class="active-player-hand__side active-player-hand__side--right">
-                    <img src="img/table/hand-right.png" alt="Рука игрока" class="active-player-hand__image" />
-                  </div>
-                </div>
-              </div>
-              <!-- Таблицы игроков -->
-              <div id="player-tables" class="player-tables"></div>
+                <!-- Таблицы игроков -->
+                <div id="player-tables" class="player-tables"></div>
             </div>
-          </div>
-
-
+        </div>
     </body>
 </html>
