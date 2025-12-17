@@ -1221,6 +1221,29 @@
     box-shadow: 0 0 2px rgba(0, 255, 0, 0.2);
 }
 
+@media (max-width: 480px) {
+    .player-exchange-block__choice-column {
+        /* background-color: red !important; */
+        top: -28%;
+        height: 40%;
+    }
+
+    .player-sprint-panel__column {
+        top: -100%;
+        height: 45%;
+    }
+
+    .player-sprint-panel__row {
+        max-height: 15px !important;
+    }
+
+    .player-sprint-panel__rows-container {
+        /* background-color: blue; */
+        height: 100%;
+        margin-top: -35px;
+    }
+}
+
 .player-exchange-block__column:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -1812,6 +1835,27 @@
 .income-track__sector--inner {
     width: 50%;
     height: 50%;
+}
+
+@media (max-width: 480px) {
+    .income-track__sector--outer {
+        width: 20%;
+        height: 20%;
+    }
+
+    .income-track__sector--inner {
+        width: 15%;
+        height: 15%;
+    }
+
+    .income-track-panel {
+        margin-top: -100px;
+    }
+
+    .income-track__circle {
+        max-height: 10px !important;
+        border: none;
+    }
 }
 
 .income-track__sector:nth-child(odd) {
