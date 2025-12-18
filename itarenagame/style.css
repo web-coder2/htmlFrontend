@@ -79,7 +79,7 @@
 
     .player-personal-board__body {
         min-width: 100% !important;
-        background-color: blue;
+        background-color: green;
         flex-wrap: wrap;
     }
 
@@ -89,8 +89,9 @@
 
     .hiring-employees {
         flex-basis: 100%;
-        min-width: 100%;
-        background-color: red !important;
+        /* min-width: 100%; */
+        /* margin-top: 200px; */
+        background-color: blue !important;
     }
 
     /* .player-personal-board__body {
@@ -370,6 +371,13 @@
 .player-board-block {
     border: 2px solid green;
     background: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+    .player-board-block {
+        max-height: 43%;
+        border: 5px solid red;
+    }
 }
 
 .player-board-block--left {
@@ -1222,25 +1230,22 @@
 }
 
 @media (max-width: 480px) {
-    .player-exchange-block__choice-column {
-        /* background-color: red !important; */
-        top: -28%;
-        height: 40%;
-    }
-
     .player-sprint-panel__column {
         top: -100%;
         height: 45%;
     }
 
     .player-sprint-panel__row {
-        max-height: 15px !important;
+        height: 16px;
+        /* background-color: #00ced1; */
     }
 
     .player-sprint-panel__rows-container {
-        /* background-color: blue; */
-        height: 100%;
-        margin-top: -35px;
+        /* background-color: black;
+        border: 3px solid red; */
+        color: white;
+        min-height: 100px;
+        margin-top: 110px;
     }
 }
 
@@ -1844,12 +1849,12 @@
     }
 
     .income-track__sector--inner {
-        width: 15%;
-        height: 15%;
+        width: 19%;
+        height: 19%;
     }
 
     .income-track-panel {
-        margin-top: -100px;
+        margin-top: -50px;
     }
 
     .income-track__circle {
