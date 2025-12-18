@@ -667,7 +667,7 @@
 
 .player-department-technical-development__column {
     flex: 1 1 calc(100% / 4);
-    width: calc((100% - 20px) * 0.94 / 4);
+    /* width: calc((100% - 20px) * 0.94 / 4); */
     height: 100%;
     border: 1px solid rgba(0, 255, 0, 0.5);
     background: rgba(0, 0, 0, 0.3);
@@ -1231,21 +1231,67 @@
 
 @media (max-width: 480px) {
     .player-sprint-panel__column {
-        top: -100%;
-        height: 45%;
+        top: 0%;
+        height: 100%;
     }
 
     .player-sprint-panel__row {
         height: 16px;
-        /* background-color: #00ced1; */
+    }
+
+    /* adaptive styles dlya tokens */
+
+    .player-sprint-panel__token {
+        width: 15px;
+        height: 15px;
+        margin-left: -60%;
+    }
+
+    .player-department-technical__token {
+        width: 15px;
+        height: 15px;
+        margin-top: 40%;
+        margin-left: -70%;
+    }
+
+    .player-department-back-office-evolution__token {
+        width: 15px;
+        height: 15px;
+    }
+
+    .player-department-back-office__token {
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        margin-top: 290%;
+        margin-left: -60%;
+    }
+
+    .player-department-sales__token {
+        width: 15px;
+        height: 15px;
+        /* background-color: green !important; */
+        margin-top: -185%;
+        margin-left: -65%;
+    }
+
+    /* tut the end styles dlya tokens */
+
+    .player-department-technical-development__columns-wrapper {
+        margin-top: 10%;
+        margin-left: 10%;
+        width: 90%;
+        height: 100px;
+        gap: 0px;
+    }
+
+    .player-department-technical-development__column {
+        min-width: calc(100% / 4) !important;
     }
 
     .player-sprint-panel__rows-container {
-        /* background-color: black;
-        border: 3px solid red; */
         color: white;
-        min-height: 100px;
-        margin-top: 110px;
+        margin-top: -40px;
     }
 }
 
