@@ -733,7 +733,7 @@
     box-sizing: border-box;
 }
 
-.player-department-technical-development-column-1__rows-wrapper .player-department-technical-development__row,
+/* .player-department-technical-development-column-1__rows-wrapper .player-department-technical-development__row,
 .player-department-technical-development-column-3__rows-wrapper .player-department-technical-development__row {
     flex: 1 1 calc(100% / 5);
     height: calc(100% / 5);
@@ -743,6 +743,22 @@
 .player-department-technical-development-column-4__rows-wrapper .player-department-technical-development__row {
     flex: 1 1 calc(100% / 6);
     height: calc(100% / 6);
+} */
+
+.player-department-technical-development__column--pink .player-department-technical-development__row {
+    height: calc(100% / 5);
+}
+
+.player-department-technical-development__column--blue .player-department-technical-development__row {
+    height: calc(100% / 5);
+}
+
+.player-department-technical-development__column--orange .player-department-technical-development__row {
+    height: calc(100% / 6);
+}
+
+.player-department-technical-development__column--purple .player-department-technical-development__row {
+    height: calc(100% / 5);
 }
 
 .player-department-technical-development__row:first-child {
@@ -859,7 +875,6 @@
     border: 2px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.15);
     pointer-events: none;
-    background-color: #00ced1;
 }
 
 .player-department-back-office-evolution__token::before {
@@ -1289,7 +1304,6 @@
     .player-department-back-office-evolution__token {
         width: 15px;
         height: 15px;
-        background-color: #00ced1;
     }
 
     .player-department-back-office__token {
@@ -2789,7 +2803,7 @@
     transform: scale(0.98);
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .events-and-skills {
         display: block;
     }
@@ -2798,6 +2812,207 @@
     }
     .round-panel {
         width: 100%;
+    }
+} */
+
+@media (max-width: 480px) {
+    .events-and-skills {
+        display: grid;
+        grid-template-areas:
+            'line1 line2'
+            'line3 line3';
+        gap: 10px;
+    }
+
+    .dice-panel {
+        grid-area: line2;
+        background-color: red;
+    }
+
+    .event-card-panel {
+        grid-area: line1;
+        background-color: green;
+    }
+
+    .round-panel {
+        grid-area: line3;
+    }
+
+    /* TODO: тут я для мобилки не вывожу иконку деньги игрока и баджерсы */
+
+    .badgers-panel__info {
+        display: grid;
+        grid-template-areas: 'line2 line1';
+        align-items: flex-end;
+    }
+
+    .badgers-panel__image {
+        display: none;
+    }
+
+    .badgers-panel__counts {
+        color: black;
+        grid-area: line2;
+        font-size: 20px;
+    }
+
+    .badgers-panel__label {
+        grid-area: line1;
+        font-size: 20px;
+    }
+
+    .badgers-panel {
+        display: none;
+    }
+}
+
+/* TODO: тут начну делать запросы медиа адаптив дял планшетов */
+
+@media (max-width: 1140px) and (min-width: 480px) {
+    .events-and-skills {
+        display: grid;
+        grid-template-areas: 'line2 line3' 'line2 line1';
+    }
+
+    .event-card-panel {
+        grid-area: line1;
+    }
+
+    .dice-panel {
+        grid-area: line3;
+    }
+
+    .round-panel {
+        grid-area: line2;
+    }
+
+    .player-department-back-office-evolution-column-1__rows-wrapper {
+        height: 60%;
+    }
+
+    .player-department-technical-development__columns-wrapper {
+        /* margin-top: 10%; */
+        margin-left: 10%;
+        width: 90%;
+        height: 100px;
+        gap: 0px;
+    }
+
+    .money-and-project {
+        display: grid;
+        grid-template-areas: 'projects projects' 'playerMoney bancMoney';
+        /* TODO: убираю банк туда поместю проекты */
+        /* grid-template-areas: 'projects projects' 'playerMoney playerProjects'; */
+    }
+
+    .player-money-panel {
+        grid-area: playerMoney;
+    }
+
+    .project-board-panel {
+        grid-area: projects;
+    }
+
+    .bank {
+        grid-area: bancMoney;
+        background-color: whitesmoke;
+        border: 2px solid rgb(203, 232, 232);
+        /* display: none; */
+    }
+
+    .players-table__body {
+        display: grid;
+        grid-template-areas: 'projects' 'planshet';
+    }
+
+    .it-projects {
+        display: grid;
+        grid-template-areas: 'header columns';
+        grid-area: projects;
+        background-color: #e1e1e1;
+        min-width: 100% !important;
+    }
+
+    .it-projects__header {
+        grid-area: header;
+    }
+
+    .it-projects__columns {
+        grid-area: columns;
+        display: grid;
+        grid-template-areas: 'complete parts';
+    }
+
+    .completed-projects {
+        grid-area: complete;
+    }
+
+    .parts-of-projects {
+        grid-area: parts;
+    }
+
+    .player-personal-board {
+        grid-area: planshet;
+        width: 100%;
+    }
+
+    .player-personal-board__body {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        align-items: flex-start;
+    }
+
+    .player-personal-board {
+        min-width: 100%;
+    }
+
+    .player-exchange-block__block {
+        background-color: rgba(0, 255, 0, 0.12);
+        margin-left: -100%;
+    }
+
+    .player-board-block--right {
+        margin-left: -20%;
+        max-width: 20% !important;
+    }
+
+    .player-department-back-office-evolution-column-1__rows-wrapper {
+        height: 100%;
+    }
+
+    .project-board-panel__column--expensive {
+        top: 50%;
+    }
+
+    .hiring-employees {
+        background-color: red;
+        height: 100%;
+    }
+
+    .sales-department {
+        height: 30%;
+    }
+
+    .founder-card__image {
+        width: 130px !important;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 821px) {
+    .player-department-technical-development__columns-wrapper {
+        height: 150px;
+        /* background-color: white !important; */
+    }
+    .player-department-back-office-evolution-column-1__rows-wrapper {
+        height: 100%;
+    }
+    .player-department-technical {
+        /* background-color: white; */
+        /* top: -10%; */
+    }
+    .player-department-back-office {
+        max-height: 170px;
+        top: -80px;
     }
 }
 
