@@ -2998,22 +2998,128 @@
     }
 }
 
-@media (min-width: 767px) and (max-width: 821px) {
+/* @media (min-width: 767px) and (max-width: 821px) {
     .player-department-technical-development__columns-wrapper {
         height: 150px;
-        /* background-color: white !important; */
     }
+
     .player-department-back-office-evolution-column-1__rows-wrapper {
         height: 100%;
     }
-    .player-department-technical {
-        /* background-color: white; */
-        /* top: -10%; */
-    }
+
     .player-department-back-office {
         max-height: 170px;
         top: -80px;
     }
+
+    .player-exchange-block {
+        margin-top: 30% !important;
+    }
+
+    .player-sprint-panel__rows-container {
+        margin-top: -80% !important;
+    }
+
+    .player-personal-board__body {
+        display: block;
+    }
+
+    .player-sprint-panel {
+        background-color: aqua;
+    }
+
+    .player-sprint-panel__row {
+        min-height: 25px !important;
+    }
+
+    .player-exchange-block__column--bonus {
+        min-width: 50% !important;
+    }
+
+    .player-sprint-panel__column--first {
+        background-color: rgba(100, 50, 122, 0.5);
+        max-width: 10% !important;
+    }
+
+    .sprint-column-backlog {
+        background-color: rgba(122, 50, 100, 0.5);
+        max-width: 15% !important;
+    }
+
+    .sprint-column-in-progress {
+        background-color: rgba(50, 245, 50, 0.5);
+        max-width: 15% !important;
+    }
+    .sprint-column-testing {
+        background-color: rgba(50, 145, 150, 0.5);
+        max-width: 15% !important;
+    }
+    .sprint-column-completed {
+        background-color: rgba(240, 45, 210, 0.5);
+        max-width: 15% !important;
+    }
+} */
+
+@media (min-width: 767px) and (max-width: 821px) { 
+
+    .player-personal-board__body {
+        display: block;
+    }
+
+    .player-board-blocks {
+        max-height: 53% !important;
+    }
+
+    .player-exchange-block {
+        max-height: 500px !important;
+        margin-left: 50%;
+        width: 50% !important;
+    }
+
+    .player-exchange-block__block {
+        width: 170%;
+    }
+
+    .player-sprint-panel {
+        margin-top: 5% !important;
+        max-height: 40% !important;
+    }
+
+    .player-board-block--right {
+        margin: 0;
+        min-width: 240px !important;
+    }
+
+    .player-department-sales {
+        background-color: rgba(244, 0, 0, 0.48);
+        max-height: 33%;
+    }
+
+    .player-department-back-office {
+        background-color: rgba(0, 0, 233, 0.4);
+        min-height: 33% !important;
+    }
+
+    .player-department-back-office-evolution__column {
+        background-color: rgba(20, 199, 10, 0.3);
+        max-width: 50% !important;
+        height: 160px;
+    }
+
+    .player-department-technical {
+        background-color: rgba(111, 0, 115, 0.5);
+        max-height: 33%;
+    }
+
+    .player-department-technical-development__columns-wrapper {
+        height: 300px;
+        margin-left: 10%;
+    }
+
+    .player-department-technical-development__column {
+        max-width: 23% !important;
+    }
+
 }
 
 @media (max-width: 1200px) {
