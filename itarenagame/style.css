@@ -89,14 +89,7 @@
 
     .hiring-employees {
         flex-basis: 100%;
-        /* min-width: 100%; */
-        /* margin-top: 200px; */
-        background-color: blue !important;
     }
-
-    /* .player-personal-board__body {
-        display: block !important;
-    } */
 }
 
 .players-table__header {
@@ -2985,7 +2978,6 @@
     }
 
     .hiring-employees {
-        background-color: red;
         height: 100%;
     }
 
@@ -3118,6 +3110,34 @@
 
     .player-department-technical-development__column {
         max-width: 23% !important;
+    }
+
+    .hiring-employees {
+        margin-top: 20px;
+    }
+
+    .sales-department {
+        background-color: rgba(9, 82, 8, 0.85);
+        max-height: 15%;
+        border: 6px solid green;
+        box-shadow: 10px 15px 20px green;
+        margin-bottom: 10px;
+    }
+
+    .back-office {
+        background-color: rgba(154, 7, 7, 0.744);
+        max-height: 15%;
+        border: 6px solid red;
+        box-shadow: 10px 15px 20px red;
+        margin-bottom: 10px;
+    }
+
+    .technical-department {
+        background-color: rgba(111, 81, 220, 0.64);
+        max-height: 15%;
+        border: 6px solid blue;
+        box-shadow: 10px 15px 20px blueviolet;
+        margin-bottom: 10px;
     }
 
 }
