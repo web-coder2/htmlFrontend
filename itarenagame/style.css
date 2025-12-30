@@ -3066,6 +3066,7 @@
         max-height: 500px !important;
         margin-left: 50%;
         width: 50% !important;
+        margin-top: 7%;
     }
 
     .player-exchange-block__block {
@@ -3085,6 +3086,7 @@
     .player-department-sales {
         background-color: rgba(244, 0, 0, 0.48);
         max-height: 33%;
+        margin-left: 5%;
     }
 
     .player-department-back-office {
@@ -3095,12 +3097,24 @@
     .player-department-back-office-evolution__column {
         background-color: rgba(20, 199, 10, 0.3);
         max-width: 50% !important;
-        height: 160px;
+        height: 180px;
     }
 
     .player-department-technical {
         background-color: rgba(111, 0, 115, 0.5);
         max-height: 33%;
+    }
+
+    .player-department-technical-development__column {
+        margin-top: 60px;
+        margin-left: 5%;
+    }
+
+    .player-department-technical-development__row {
+        height: 30px !important;
+        background-color: rgba(149, 44, 206, 0.276);
+        border: 1px solid rgba(130, 41, 219, 0.872);
+        /* TODO раскоментить это bg-color и border когда увидеть резалт эти стили хорошо вдино как они приделаны к элементам и четко лежат */
     }
 
     .player-department-technical-development__columns-wrapper {
@@ -3141,6 +3155,8 @@
     }
 
 }
+
+/* TODO для другизх планшетов другго диапзано щирины px скопипастить мне эти медиазапросы и немного изменять их  (ебаные планшеты) */
 
 @media (max-width: 1200px) {
     .game-layout {
