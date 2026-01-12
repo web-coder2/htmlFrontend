@@ -3052,7 +3052,9 @@
     }
 } */
 
-@media (min-width: 767px) and (max-width: 821px) { 
+
+/* Повторить такой медиа запрос но только также для планшета но чуть другиз габаритов */
+@media (min-width: 767px) and (max-width: 820px) { 
 
     .player-personal-board__body {
         display: block;
@@ -3063,10 +3065,10 @@
     }
 
     .player-exchange-block {
-        max-height: 500px !important;
+        max-height: 550px !important;
         margin-left: 50%;
         width: 50% !important;
-        margin-top: 7%;
+        margin-top: 2% !important;
     }
 
     .player-exchange-block__block {
@@ -3074,7 +3076,7 @@
     }
 
     .player-sprint-panel {
-        margin-top: 5% !important;
+        margin-top: 2% !important;
         max-height: 40% !important;
     }
 
@@ -3132,7 +3134,7 @@
 
     .sales-department {
         background-color: rgba(9, 82, 8, 0.85);
-        max-height: 15%;
+        max-height: 12%;
         border: 6px solid green;
         box-shadow: 10px 15px 20px green;
         margin-bottom: 10px;
@@ -3140,7 +3142,7 @@
 
     .back-office {
         background-color: rgba(154, 7, 7, 0.744);
-        max-height: 15%;
+        max-height: 12%;
         border: 6px solid red;
         box-shadow: 10px 15px 20px red;
         margin-bottom: 10px;
@@ -3148,13 +3150,127 @@
 
     .technical-department {
         background-color: rgba(111, 81, 220, 0.64);
-        max-height: 15%;
+        max-height: 12%;
         border: 6px solid blue;
         box-shadow: 10px 15px 20px blueviolet;
         margin-bottom: 10px;
     }
 
 }
+
+
+/* ЗДЕСЬ другой диапазон ширины высоты но тогоже планшетов */
+
+@media (min-width: 821px) and (max-width: 1024px) { 
+
+    .player-personal-board__body {
+        display: block;
+    }
+
+    .player-board-blocks {
+        max-height: 57% !important;
+    }
+
+    .player-exchange-block {
+        max-height: 580px !important;
+        margin-left: 50%;
+        width: 50% !important;
+        margin-top: 7%;
+    }
+
+    .player-exchange-block__block {
+        width: 170%;
+    }
+
+    .player-sprint-panel {
+        margin-top: 8% !important;
+        max-height: 40% !important;
+    }
+
+    .player-board-block--right {
+        margin: 0;
+        min-width: 280px !important;
+    }
+
+    .player-department-sales {
+        background-color: rgba(244, 0, 0, 0.48);
+        max-height: 33%;
+        margin-left: 5%;
+    }
+
+    .player-department-back-office {
+        background-color: rgba(0, 0, 233, 0.4);
+        min-height: 33% !important;
+    }
+
+    .player-department-back-office-evolution__column {
+        background-color: rgba(20, 199, 10, 0.3);
+        max-width: 50% !important;
+        height: 230px;
+    }
+
+    .player-department-technical {
+        background-color: rgba(111, 0, 115, 0.5);
+        max-height: 33%;
+    }
+
+    .player-department-technical-development__column {
+        margin-top: 60px;
+        margin-left: 5%;
+    }
+
+    .player-department-technical-development__row {
+        height: 30px !important;
+        background-color: rgba(149, 44, 206, 0.276);
+        border: 1px solid rgba(130, 41, 219, 0.872);
+        /* TODO раскоментить это bg-color и border когда увидеть резалт эти стили хорошо вдино как они приделаны к элементам и четко лежат */
+    }
+
+    .player-department-technical-development__columns-wrapper {
+        height: 300px;
+        margin-left: 10%;
+        margin-top: 25px;
+    }
+
+    .player-department-technical-development__column {
+        max-width: 23% !important;
+    }
+
+    .hiring-employees {
+        margin-top: 20px;
+    }
+
+    .sales-department {
+        background-color: rgba(9, 82, 8, 0.85);
+        max-height: 12%;
+        border: 6px solid green;
+        box-shadow: 10px 15px 20px green;
+        margin-bottom: 10px;
+    }
+
+    .back-office {
+        background-color: rgba(154, 7, 7, 0.744);
+        max-height: 12%;
+        border: 6px solid red;
+        box-shadow: 10px 15px 20px red;
+        margin-bottom: 10px;
+    }
+
+    .technical-department {
+        background-color: rgba(111, 81, 220, 0.64);
+        max-height: 12%;
+        border: 6px solid blue;
+        box-shadow: 10px 15px 20px blueviolet;
+        margin-bottom: 10px;
+    }
+
+    /* .active-player-hand {
+        margin-top: 180px;
+    } */
+
+}
+
+
 
 /* TODO для другизх планшетов другго диапзано щирины px скопипастить мне эти медиазапросы и немного изменять их  (ебаные планшеты) */
 
