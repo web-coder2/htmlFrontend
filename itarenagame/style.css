@@ -79,7 +79,6 @@
 
     .player-personal-board__body {
         min-width: 100% !important;
-        background-color: green;
         flex-wrap: wrap;
     }
 
@@ -1308,7 +1307,6 @@
     .player-department-sales__token {
         width: 15px;
         height: 15px;
-        background-color: green !important;
     }
 
     /* tut the end styles dlya tokens */
@@ -2819,12 +2817,10 @@
 
     .dice-panel {
         grid-area: line2;
-        background-color: red;
     }
 
     .event-card-panel {
         grid-area: line1;
-        background-color: green;
     }
 
     .round-panel {
@@ -3052,6 +3048,11 @@
     }
 } */
 
+body {
+    background-color: black;
+    color: white;
+}
+
 
 /* Повторить такой медиа запрос но только также для планшета но чуть другиз габаритов */
 @media (min-width: 767px) and (max-width: 820px) { 
@@ -3089,6 +3090,16 @@
         background-color: rgba(244, 0, 0, 0.48);
         max-height: 33%;
         margin-left: 5%;
+    }
+
+    .income-track__circle--inner {
+        width: 70% !important;
+        height: 70% !important;
+    }
+
+    .income-track__circle--outer {
+        width: 100% !important;
+        height: 100% !important;
     }
 
     .player-department-back-office {
@@ -3196,6 +3207,16 @@
         background-color: rgba(244, 0, 0, 0.48);
         max-height: 33%;
         margin-left: 5%;
+    }
+
+    .income-track__circle--inner {
+        width: 80% !important;
+        height: 80% !important;
+    }
+
+    .income-track__circle--outer {
+        width: 120% !important;
+        height: 120% !important;
     }
 
     .player-department-back-office {
