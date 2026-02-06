@@ -4,47 +4,132 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     </head>
     <body>
-        <div class="users-div">
-            <img class="users-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcp6RWRGQpyY1fyQ79DgRlfOEt2wXLx0-Yow&s">
-            <div class="users-info">
-                <h3 class="users-name">UserName</h3>
-                <p class="users-name">profile: Backend-dev</p>
-                <p class="users-name">salary: 10000$/month</p>
+        <div id="app">
+            <div class="users-div">
+                <img class="users-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcp6RWRGQpyY1fyQ79DgRlfOEt2wXLx0-Yow&s">
+                <div class="users-info">
+                    <h3 class="users-name">UserName</h3>
+                    <p class="users-name">profile: Backend-dev</p>
+                    <p class="users-name">salary: 10000$/month</p>
+                </div>
+            </div>
+    
+            <div class="app-div">
+                <h2>Это todoApp приложение {{ ell }}</h2>
+                <p>это приложение наподобии jira но оно на vue.js (без сборки пока что) на html и css</p>
+            </div>
+    
+    
+            <div class="task-div">
+                
+                <div class="task-column backlog-column">
+                    <h3 class="task-title">Backlog</h3>
+                    <div class="task-array">
+                        <div v-for="(item) in renderedTaskArray.backlog">
+                            <h4>{{ item.name }}</h4>
+                            <p>developer: {{ item.dev }}</p>
+                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="task-column progress-column">
+                    <h3 class="task-title">In Progress</h3>
+                    <div class="task-array">
+                        <div v-for="(item) in renderedTaskArray.progress">
+                            <h4>{{ item.name }}</h4>
+                            <p>developer: {{ item.dev }}</p>
+                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="task-column testing-column">
+                    <h3 class="task-title">Testing</h3>
+                    <div class="task-array">
+                        <div v-for="(item) in renderedTaskArray.testing">
+                            <h4>{{ item.name }}</h4>
+                            <p>developer: {{ item.dev }}</p>
+                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="task-column done-column">
+                    <h3 class="task-title">Done</h3>
+                    <div class="task-array">
+                        <div v-for="(item) in renderedTaskArray.done">
+                            <h4>{{ item.name }}</h4>
+                            <p>developer: {{ item.dev }}</p>
+                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
         </div>
-
-        <div class="app-div">
-            <h2>Это todoApp приложение</h2>
-            <p>это приложение наподобии jira но оно на vue.js (без сборки пока что) на html и css</p>
-        </div>
-
-
-        <div class="task-div">
-            
-            <div class="task-column backlog-column">
-                <h3 class="task-title">Backlog</h3>
-                <div class="task-array"></div>
-            </div>
-
-            <div class="task-column progress-column">
-                <h3 class="task-title">In Progress</h3>
-                <div class="task-array"></div>
-            </div>
-
-            <div class="task-column testing-column">
-                <h3 class="task-title">Testing</h3>
-                <div class="task-array"></div>
-            </div>
-
-            <div class="task-column done-column">
-                <h3 class="task-title">Done</h3>
-                <div class="task-array"></div>
-            </div>
-
-        </div>
-
     </body>
 </html>
+
+
+<script>
+
+
+    let app = new Vue ({
+        el: '#app',
+        data() {
+            return {
+                ell: 'Beta version',
+                taskArray: [
+                    { name: 'API модуль', dev: 'web-coder', state: 'backlog', required: 'hight'},
+                    { name: 'интерфейс для модуля', dev: 'web-coder', state: 'testing', required: 'hight'},
+                    { name: 'Личный кобинет', dev: 'web-coder', state: 'done', required: 'low'},
+                    { name: 'модальное окно', dev: 'web-coder', state: 'done', required: 'low'},
+                    { name: 'метрика console-warn', dev: 'web-coder', state: 'progress', required: 'medium'},
+                    { name: 'CI/CD девопс', dev: 'web-coder', state: 'testing', required: 'low'},
+                    { name: 'формы создания vue.js', dev: 'web-coder', state: 'backlog', required: 'hight'},
+                ],
+                renderedTaskArray: {},
+            }
+        },
+        methods: {
+            getTaskColor(task) {
+                let color
+
+                if (task.required === 'hight') {
+                    color = 'red'
+                } else if (task.required === 'medium') {
+                    color = 'yellow'
+                } else if (task.required === 'low') {
+                    color = 'green'
+                }
+
+                return color
+            },
+            renderTaskArray() {
+                const groupedTasks = {
+                    backlog: [],
+                    progress: [],
+                    testing: [],
+                    done: []
+                };
+
+                this.taskArray.forEach(task => {
+                    if (groupedTasks.hasOwnProperty(task.state)) {
+                        groupedTasks[task.state].push(task);
+                    }
+                });
+
+                this.renderedTaskArray = groupedTasks;
+            }
+        },
+        beforeMount() {
+            this.renderTaskArray()
+        }
+    })
+
+
+</script>
 
 
 <style>
