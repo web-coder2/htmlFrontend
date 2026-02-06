@@ -18,6 +18,17 @@
                 <h2>Это todoApp приложение {{ ell }}</h2>
                 <p>это приложение наподобии jira но оно на vue.js (без сборки пока что) на html и css</p>
             </div>
+
+            <div class="createTaskForm">
+                <input v-model="newTask.name" class="create-task-input">
+                <select v-model="newTask.dev" class="select-user">
+                    <option v-for="(user) in usersCompany" :value="user.name">{{ user.name }}</option>
+                </select>
+                <select v-model="newTask.required" class="select-user">
+                    <option v-for="(req) in requirementsList" :value="req">{{ req }}</option>
+                </select>
+                <button @click="addNewTask()" class="create-task-btn">Применить</button>
+            </div>
     
     
             <div class="task-div">
@@ -29,6 +40,7 @@
                             <h4 class="task-name">{{ item.name }}</h4>
                             <p class="task-dev">developer: {{ item.dev }}</p>
                             <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                            <button @click="taskNextState(item)" class="btn-next greener">>>></button>
                         </div>
                     </div>
                 </div>
@@ -40,6 +52,7 @@
                             <h4 class="task-name">{{ item.name }}</h4>
                             <p class="task-dev">developer: {{ item.dev }}</p>
                             <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                            <button @click="taskNextState(item)" class="btn-next bluer">>>></button>
                         </div>
                     </div>
                 </div>
@@ -51,6 +64,7 @@
                             <h4 class="task-name">{{ item.name }}</h4>
                             <p class="task-dev">developer: {{ item.dev }}</p>
                             <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                            <button @click="taskNextState(item)" class="btn-next purpler">>>></button>
                         </div>
                     </div>
                 </div>
@@ -90,6 +104,16 @@
                     { name: 'формы создания vue.js', dev: 'web-coder', state: 'backlog', required: 'hight'},
                 ],
                 renderedTaskArray: {},
+                usersCompany: [
+                    { name: 'web-coder', dev: 'backend', id: 142435232 },
+                    { name: 'mrRobot', dev: 'devops', id: 2335434355 }
+                ],
+                requirementsList: ['hight', 'medium', 'low'],
+                newTask: {
+                    name: 'API',
+                    dev: 'web-coder',
+                    required: "medium"
+                }
             }
         },
         methods: {
@@ -121,6 +145,51 @@
                 });
 
                 this.renderedTaskArray = groupedTasks;
+            },
+            taskNextState(task) {
+
+                let nextState
+
+                if (task.state === 'backlog') {
+                    nextState = 'progress'
+                } else if (task.state === 'progress') {
+                    nextState = 'testing'
+                } else if (task.state === 'testing') {
+                    nextState = 'done'
+                }
+
+                let updatedTask = {
+                    ...task,
+                    state: nextState
+                };
+
+                const index = this.taskArray.findIndex(t => t.name === task.name);
+
+                if (index === -1) {
+                    return;
+                }
+
+                this.taskArray.splice(index, 1);
+
+                this.taskArray.push(updatedTask);
+                
+                this.renderTaskArray()
+            },
+            addNewTask() {
+                this.taskArray.push({
+                    name: this.newTask.name,
+                    dev: this.newTask.dev,
+                    state: 'backlog',
+                    required: this.newTask.required
+                });
+
+                this.renderTaskArray()
+
+                this.newTask = {
+                    name: 'API',
+                    dev: 'web-coder',
+                    required: "medium"
+                }
             }
         },
         beforeMount() {
@@ -271,6 +340,86 @@ body {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+}
+
+.createTaskForm {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.create-task-input {
+    padding: 10px 15px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.create-task-input:focus {
+    border-color: #007bff;
+    background-color: #2a2a2a;
+}
+
+.select-user {
+    padding: 10px 15px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.select-user:hover {
+    border-color: #007bff;
+}
+
+.create-task-btn {
+    padding: 10px 20px;
+    background-color: #02460c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.create-task-btn:hover {
+    background-color: #008d07;
+    transform: translateY(-2px);
+}
+
+.greener {
+    background-color: #02460c;
+}
+
+.bluer {
+    background-color: #007bff;
+}
+
+.purpler {
+    background-color: purple;
+}
+
+.btn-next {
+    padding: 5px 5px;
+    border-radius: 300%;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 </style>
