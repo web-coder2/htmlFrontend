@@ -25,10 +25,10 @@
                 <div class="task-column backlog-column">
                     <h3 class="task-title">Backlog</h3>
                     <div class="task-array">
-                        <div v-for="(item) in renderedTaskArray.backlog">
-                            <h4>{{ item.name }}</h4>
-                            <p>developer: {{ item.dev }}</p>
-                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        <div class="task-self" v-for="(item) in renderedTaskArray.backlog">
+                            <h4 class="task-name">{{ item.name }}</h4>
+                            <p class="task-dev">developer: {{ item.dev }}</p>
+                            <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
                         </div>
                     </div>
                 </div>
@@ -36,10 +36,10 @@
                 <div class="task-column progress-column">
                     <h3 class="task-title">In Progress</h3>
                     <div class="task-array">
-                        <div v-for="(item) in renderedTaskArray.progress">
-                            <h4>{{ item.name }}</h4>
-                            <p>developer: {{ item.dev }}</p>
-                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        <div class="task-self" v-for="(item) in renderedTaskArray.progress">
+                            <h4 class="task-name">{{ item.name }}</h4>
+                            <p class="task-dev">developer: {{ item.dev }}</p>
+                            <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,10 +47,10 @@
                 <div class="task-column testing-column">
                     <h3 class="task-title">Testing</h3>
                     <div class="task-array">
-                        <div v-for="(item) in renderedTaskArray.testing">
-                            <h4>{{ item.name }}</h4>
-                            <p>developer: {{ item.dev }}</p>
-                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        <div class="task-self" v-for="(item) in renderedTaskArray.testing">
+                            <h4 class="task-name">{{ item.name }}</h4>
+                            <p class="task-dev">developer: {{ item.dev }}</p>
+                            <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
                         </div>
                     </div>
                 </div>
@@ -58,10 +58,10 @@
                 <div class="task-column done-column">
                     <h3 class="task-title">Done</h3>
                     <div class="task-array">
-                        <div v-for="(item) in renderedTaskArray.done">
-                            <h4>{{ item.name }}</h4>
-                            <p>developer: {{ item.dev }}</p>
-                            <p :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
+                        <div class="task-self" v-for="(item) in renderedTaskArray.done">
+                            <h4 class="task-name">{{ item.name }}</h4>
+                            <p class="task-dev">developer: {{ item.dev }}</p>
+                            <p class="task-req" :style="{'color': getTaskColor(item)}">required is {{ item.required }}</p>
                         </div>
                     </div>
                 </div>
@@ -237,6 +237,40 @@ body {
 .done-column {
     background-color: rgb(93, 3, 3);
     border: solid 4px rgb(250, 14, 14);
+}
+
+
+.task-self {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-self:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.task-name {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7d7d7d;
+}
+
+.task-dev {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #c7c7c7;
+}
+
+.task-req {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 </style>
