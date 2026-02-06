@@ -21,22 +21,22 @@
 
         <div class="task-div">
             
-            <div class="task-column">
+            <div class="task-column backlog-column">
                 <h3 class="task-title">Backlog</h3>
                 <div class="task-array"></div>
             </div>
 
-            <div class="task-column">
+            <div class="task-column progress-column">
                 <h3 class="task-title">In Progress</h3>
                 <div class="task-array"></div>
             </div>
 
-            <div class="task-column">
+            <div class="task-column testing-column">
                 <h3 class="task-title">Testing</h3>
                 <div class="task-array"></div>
             </div>
 
-            <div class="task-column">
+            <div class="task-column done-column">
                 <h3 class="task-title">Done</h3>
                 <div class="task-array"></div>
             </div>
@@ -45,3 +45,113 @@
 
     </body>
 </html>
+
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #000000;
+}
+
+.users-div {
+    display: flex;
+    align-items: center;
+    background-color: #2b2b2b;
+    color: rgb(192, 242, 180);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-color: rgb(107, 10, 218);
+    border-width: 4px;
+    border-style: solid;
+}
+
+.users-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.users-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.users-name {
+    margin: 4px 0;
+    font-weight: bold;
+}
+
+.app-div {
+    background-color: #2e1313;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.app-div h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.app-div p {
+    margin: 0;
+}
+
+.task-div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.task-column {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.task-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
+
+.task-array {
+    min-height: 50px;
+}
+
+.backlog-column {
+    background-color: rgb(29, 49, 29);
+    border: solid 4px rgb(6, 128, 43);
+}
+
+.progress-column {
+    background-color: rgb(11, 12, 40);
+    border: solid 4px rgb(7, 10, 185);
+}
+
+.testing-column {
+    background-color: rgb(31, 3, 54);
+    border: solid 4px rgb(123, 18, 235);
+}
+
+.done-column {
+    background-color: rgb(93, 3, 3);
+    border: solid 4px rgb(250, 14, 14);
+}
+
+</style>
